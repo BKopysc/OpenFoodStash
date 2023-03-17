@@ -35,6 +35,7 @@ Content/Zawartość:
   * [Aktualności](#aktualności)
 - [Screenshots](#screenshots)
 
+****
 
 #### English version
 
