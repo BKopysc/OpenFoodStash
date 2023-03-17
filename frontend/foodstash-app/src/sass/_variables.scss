@@ -1,0 +1,10 @@
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
+
+$my-primary: mat.define-palette(mat.$brown-palette, 700);
+//$my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$my-accent: mat.define-palette(mat.$deep-orange-palette, A200, A100, A400);
+
+$my-warning: mat.define-palette(mat.$red-palette, 500);
+
+

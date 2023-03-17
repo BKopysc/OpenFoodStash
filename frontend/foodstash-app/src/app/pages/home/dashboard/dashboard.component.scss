@@ -1,0 +1,28 @@
+.loading-title-div{
+  height: 25px;
+  width: 200px;
+}
+
+.welcome-title{
+  display: flex;
+  gap: 5px;
+  font-size: 25px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.buttons-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.over-buttons-div{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}

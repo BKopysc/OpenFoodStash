@@ -1,0 +1,22 @@
+.overall-card{
+  width: 100px;
+  height: 100px;
+}
+.value-span{
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.label-span{
+  font-size: 18px;
+}
+
+
+.card-content{
+  height: 70%;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

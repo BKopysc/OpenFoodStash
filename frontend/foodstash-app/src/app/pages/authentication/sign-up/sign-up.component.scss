@@ -1,0 +1,94 @@
+
+.signup-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+
+.banner-div{
+  margin-bottom: 20px;
+}
+
+.form-card{
+  max-width: 400px;
+  min-width: 270px;
+  padding: 20px 30px !important;
+  margin: 0px 20px;
+}
+
+.form-card-title{
+  margin-top: 5px !important;
+  width: 100%;
+  text-align: center;
+}
+
+.form-card-subtitle{
+  width: 100%;
+  text-align: center;
+  margin-top: 15px !important;
+}
+
+.form-input{
+  width: 100%;
+}
+
+.card-divider{
+  height: 10px;
+}
+
+.form-button{
+  width: 100%;
+}
+
+.form-info-div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 2px;
+  color: grey;
+  width: fit-content;
+}
+
+.form-info-icon{
+  font-size: 16px;
+  height: 16px;
+  width: 16px;
+}
+
+.checkbox-section{
+  margin-bottom: 15px;
+}
+
+.activation-div{
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.activation-full-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.activation-button-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.activation-button-div button{
+
+}
+
+.activation-span{
+  font-size: 16px;
+  margin-right: 10px;
+}
+

@@ -1,0 +1,17 @@
+.main-div{
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.select-div{
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.select-span{
+  font-size: 10px;
+  font-weight: 300;
+}

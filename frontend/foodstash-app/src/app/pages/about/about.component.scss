@@ -1,0 +1,98 @@
+@import "src/sass/variables";
+@import "@angular/material/theming";
+
+$faq-row-color: mat-color($my-primary,0.1);
+
+.div-down {
+  margin-bottom: 10px;
+}
+
+.about-div {
+  margin-top: 100px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h2 {
+  font-weight: normal;
+  text-align: left;
+}
+
+span {
+  font-weight: normal;
+}
+
+.about-card {
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+.faq-title-row{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.faq-row {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.faq-row-span{
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.faq-row:hover {
+  cursor: pointer;
+  background-color: $faq-row-color;
+  border-radius: 10px 10px 0 0;
+}
+
+.faq-row-fixed {
+  background-color: $faq-row-color;
+  border-radius: 10px 10px 0 0;
+}
+
+.faq-expanded-row {
+  padding: 5px;
+  background-color: $faq-row-color;
+  border-radius: 0 0 10px 10px;
+  border-top: none;
+}
+
+.card-title{
+  margin-top: 20px !important;
+  font-size: 40px;
+  text-align: center;
+}
+
+.card-subtitle{
+  margin-top: 20px !important;
+  text-align: center;
+}
+
+.options-span{
+  font-size: 20px;
+}
+
+.faq-title{
+  font-size: 20px;
+}
+
+.divider{
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
+}
+
+.answer-row{
+  text-align: justify;
+  text-justify: inter-word;
+}

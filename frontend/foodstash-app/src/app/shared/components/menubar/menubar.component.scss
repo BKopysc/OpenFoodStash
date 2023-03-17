@@ -1,0 +1,139 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.navbar-title{
+  //margin-left: 20px;
+}
+
+.navbar-title span{
+  font-size: 20px;
+}
+
+.navbar-title button{
+  display: flex;
+}
+
+.mat-option{
+  font-size: medium !important;
+}
+
+.navbar-icon{
+  height: 30px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+}
+
+.navbar-route > * {
+  font-weight: lighter;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.navbar-route-right {
+  margin-left: 10px;
+  margin-right: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5px;
+}
+
+.navbar-primary{
+  font-weight: normal !important;
+  color: #d98d01 !important;
+}
+
+.navbar-collapse{
+  display: none;
+}
+
+a, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+
+.toggle-button{
+
+}
+
+
+mat-nav-list mat-icon{
+  margin-right: 10px;
+}
+
+.hidden{
+  display: none;
+}
+
+.fixedTitle{
+  margin-right: 0px;
+  margin-left: 0px;
+  height: 100%;
+  //text-align: center;
+}
+
+.fixedTitle button{
+  height: 100%;
+  align-items: center;
+}
+
+.fixedToolbar{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.fixedToggle{
+  position: absolute;
+  left: 10px;
+}
+
+.navbar-spacer{
+  flex: 1 1 auto;
+}
+
+.navbar-lang{
+  //margin-left: auto;
+  margin-right: 5px;
+}
+
+.lang-icon{
+  font-size: 20px;
+}
+
+.mobile-navbar-lang{
+  margin-top: 10px;
+}
+
+.username-button{
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.mobile-divider{
+  margin-top: 40px;
+}

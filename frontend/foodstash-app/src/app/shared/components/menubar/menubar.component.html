@@ -1,0 +1,146 @@
+<mat-sidenav-container class="sidenav-container">
+
+  <!--  for-mobile-->
+  <mat-sidenav #drawer
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [ngClass]="{hidden: !(isHandset$ | async)}"
+               [opened]="(isHandset$ | async) === false"
+               class="sidenav"
+               fixedInViewport="false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a (click)="drawer.close()" mat-list-item routerLink="/">
+        <mat-icon aria-hidden="false" aria-label="home">home</mat-icon>
+        <span>{{'navbar.home' | translate}}</span>
+      </a>
+
+      <a *ngFor="let route of leftRoutes"
+         (click)="drawer.close()" mat-list-item [routerLink]="route.link">
+        <mat-icon aria-hidden="false" aria-label="" [fontIcon]="route.icon"></mat-icon>
+        <span>{{route.title | translate}}</span>
+      </a>
+
+      <div class="mobile-navbar-lang">
+        <mat-select #selectLang
+                    (selectionChange)="translateLanguageTo(selectLang.value)"
+                    [(value)]="selectedLang"
+                    class="form-control" disableOptionCentering>
+          <mat-select-trigger>
+            <button mat-list-item>
+              <mat-icon aria-hidden="false" aria-label="Language">translate</mat-icon>
+              <span>{{'navbar.language' | translate}}</span>
+            </button>
+          </mat-select-trigger>
+          <mat-option *ngFor="let language of languages" [value]="language.code">
+            {{ language.name }}
+          </mat-option>
+        </mat-select>
+      </div>
+
+      <mat-divider class="mobile-divider"></mat-divider>
+
+      <ng-container *ngIf="!isUserLoggedIn; else mobile_userLoggedIn">
+        <a *ngFor="let route of rightRoutes"
+           (click)="drawer.close()" mat-list-item [routerLink]="route.link">
+          <mat-icon aria-hidden="false" aria-label="" [fontIcon]="route.icon"></mat-icon>
+          <span>{{route.title | translate}}</span>
+        </a>
+      </ng-container>
+      <ng-template #mobile_userLoggedIn>
+        <div>
+          <a (click)="drawer.close()" mat-list-item [routerLink]="profileRoute">
+            <mat-icon aria-hidden="false" aria-label="account">account_circle</mat-icon>
+            <span>{{'navbar.profile' | translate}}</span>
+          </a>
+          <a (click)="drawer.close(); logoutUser()" mat-list-item routerLink="/">
+            <mat-icon aria-hidden="false" aria-label="logout">logout</mat-icon>
+            <span>{{'navbar.logout' | translate}}</span>
+          </a>
+        </div>
+      </ng-template>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar [ngClass]="{fixedToolbar: (isHandset$ | async)}" color="primary">
+      <button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+        [ngClass]="{fixedToggle: (isHandset$ | async)}"
+        aria-label="Toggle sidenav"
+        class="toggle-button"
+        mat-icon-button
+        type="button">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+      <!--      for-desktop-->
+      <div [ngClass]="{fixedTitle: (isHandset$ | async)}" class="navbar-title">
+        <button mat-button routerLink="">
+          <!--          <img class="navbar-icon" src="assets/icons/logo.png">-->
+          <span>{{appTitle}}</span>
+        </button>
+      </div>
+
+      <!--      LEFT-ROUTES-->
+      <div [ngClass]="{hidden: (isHandset$ | async)}" class="navbar-route">
+        <button *ngFor="let route of leftRoutes" [class]="route.class" [routerLink]="route.link"
+                mat-button>
+          {{route.title | translate}}
+        </button>
+      </div>
+
+
+      <!--      SPACER-->
+      <div class="navbar-spacer"></div>
+
+      <!--      RIGHT-SIDE-->
+
+      <!--      LANG-SELECT-->
+      <div [ngClass]="{hidden: (isHandset$ | async)}" class="navbar-lang">
+        <mat-select
+          #selectLanguage
+          (selectionChange)="translateLanguageTo(selectLanguage.value)"
+          [(value)]="selectedLang" disableOptionCentering>
+          <mat-select-trigger>
+            <button mat-icon-button>
+              <mat-icon aria-hidden="false" aria-label="Language" class="lang-icon">translate</mat-icon>
+            </button>
+          </mat-select-trigger>
+          <mat-option *ngFor="let language of languages" [value]="language.code">
+            {{ language.name }}
+          </mat-option>
+        </mat-select>
+      </div>
+
+      <!--      RIGHT-ROUTES-->
+
+      <div [ngClass]="{hidden: (isHandset$ | async)}" class="navbar-route-right navbar-route">
+
+        <div *ngIf="!isUserLoggedIn">
+          <button *ngFor="let route of rightRoutes" [class]="route.class" [routerLink]="route.link"
+                  mat-button>
+            {{route.title | translate}}
+          </button>
+        </div>
+
+        <div *ngIf="isUserLoggedIn">
+          <button mat-button class="username-button" [routerLink]="profileRoute">
+              {{username}}
+          </button>
+          <button mat-icon-button (click)="logoutUser()">
+            <mat-icon>logout</mat-icon>
+          </button>
+        </div>
+
+      </div>
+
+    </mat-toolbar>
+
+    <!-- Content Here -->
+    <ng-content>
+    </ng-content>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

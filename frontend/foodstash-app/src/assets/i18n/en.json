@@ -1,0 +1,616 @@
+{
+  "about": {
+    "title": "Foodstash",
+    "subtitle": "food management application",
+    "whyTitle": "Why should I start using the app?",
+    "whyAnswer": "Foodstash will help you reduce food waste in your environment. In addition, you will save money thanks to valuable information about the food you have and an effective search engine. You will never forget about the milk you bought last month!",
+    "optionsTitle": "Extended application capabilities",
+    "quickOffers": {
+      "offer1": "Personal account",
+      "offer2": "Food managing",
+      "offer3": "Easy food search",
+      "offer4": "Expiration alerts",
+      "offer5": "Stash collaboration",
+      "offer6": "Stash statistics"
+    },
+    "optionsList": {
+      "options1": "Having a personal account with food",
+      "options2": "Creation of different types of Stashes (spaces for storing Stashes)",
+      "options3": "Assigning Storages (minor spaces) to the Stash",
+      "options4": "Adding Food to Stashes",
+      "options5": "Comprehensive food browsing by category and status",
+      "options6": "Food Finder",
+      "options7": "Sorting food by name and expiration date, among other things",
+      "options8": "Eating, discarding and disposing of food",
+      "options9": "Reviewing and restoring deleted and discarded food",
+      "options10": "Generate charts and statistics on food from a given time frame",
+      "options11": "Adding other users to collaborate together within the Stash"
+    },
+    "faqTitle": "Frequently asked questions",
+    "faqList": {
+      "faq1": "What is a Stash and Storage?",
+      "faqAnswer1_1": "Stash is a general space containing Storages. Storages are used to contain food",
+      "faqAnswer1_2": "Example: Jan has a house in Warsaw and Krakow. One of his Stashes is called: 'Warsaw house'. In the Stash he has Storages named 'refrigerator in the kitchen' and 'freezer in the basement'."
+    }
+  },
+  "navbar": {
+    "login": "Login",
+    "signUp": "Sign up",
+    "about": "About",
+    "stash": "Stashes",
+    "language": "Language",
+    "profile": "Profile",
+    "home": "Home",
+    "logout": "Logout"
+  },
+  "paginator": {
+    "itemsPerPageLabel": "Items per page:",
+    "lastPageLabel": "Last page",
+    "nextPageLabel": "Next page",
+    "previousPageLabel": "Previous page",
+    "firstPageLabel": "First page",
+    "pageOneOne": "Page 1 of 1",
+    "pageOfOf": "Page {{first}} of {{second}}"
+  },
+  "globalButtons": {
+    "back": "Back"
+  },
+  "gender": {
+    "male": "Male",
+    "female": "Female",
+    "other": "Other"
+  },
+  "basicFormErrors": {
+    "required": "Required",
+    "minLen": "Too short. Min: {{ minLen }} characters",
+    "maxLen": "Too long. Max: {{ maxLen }} characters",
+    "notEmail": "Email is incorrect",
+    "yourEmail": "This is your email"
+  },
+  "auth": {
+    "registerSuccess":  {
+      "header": "Success!",
+      "text": "Now you can login!"
+    },
+    "loginForm": {
+      "mainTitle": "Login",
+      "subTitle": "Use your credentials",
+      "email": {
+        "label": "Email"
+      },
+      "password": {
+        "label": "Password"
+      },
+      "forgotPassword": {
+        "label": "I forgot my password"
+      },
+      "loginButton": {
+        "label": "Login"
+      },
+      "signUpButton": {
+        "or": "or",
+        "label": "Sign up now!"
+      }
+    },
+    "signupForm": {
+      "mainTitle": "New account",
+      "subtitle": "Fill below informations to get started!",
+      "errors": {},
+      "email": {
+        "label": "Email"
+      },
+      "name": {
+        "label": "Name"
+      },
+      "surname": {
+        "label": "Surname"
+      },
+      "birthDate": {
+        "label": "Birth date",
+        "tipLabel": "Age information",
+        "tip": "You must be at least 13 years old."
+      },
+      "gender": {
+        "label": "Gender"
+      },
+      "password": {
+        "firstLabel": "Password",
+        "secondLabel": "Retype Password",
+        "passwordIncorrect":{
+          "line1": "Password should have at least:",
+          "line2": "8 digits",
+          "line3": "One big letter",
+          "line4": "One small letter",
+          "line5": "One special character !@#$%^&*",
+          "notMatch": "Passwords are not the same"
+        },
+        "tip": "Use strong password, follow tips while typing.",
+        "tipLabel": "Password tip"
+      },
+      "rulesCheck": {
+        "label": "I accept the ",
+        "ruleLink": "rules"
+      },
+      "submitButton": {
+        "label": "Sign Up!"
+      },
+      "activationLink": "Check email for activation link",
+      "emailNotSend": "Email not send? Check spam then try again:",
+      "resendLink": "Resend link"
+    }
+  },
+  "storageType": {
+    "fridge": "Fridge",
+    "freezer": "Freezer",
+    "shelf": "Shelf",
+    "other": "Other"
+  },
+  "stashManagement": {
+    "mainLabel": "Your stashes",
+    "emptyStashLabel": "Empty...",
+    "stashDetails": {
+      "personal": "private",
+      "shared": "shared",
+      "oneItem": "storage",
+      "items": "storages"
+    },
+    "buttons": {
+      "storage": "Storages",
+      "open": "Open",
+      "share": "Share",
+      "newStash": "New stash",
+      "newStorage": "Add storage"
+    }
+  },
+  "stashModify": {
+    "addTitle": "New stash",
+    "addSubtitle": "fill the informations",
+    "name": {
+      "label": "Name",
+      "placeholder": "Home"
+    },
+    "storages": {
+      "label": "Storages:",
+      "name": {
+        "label": "Name",
+        "placeholder": "Kitchen fridge"
+      },
+      "type": {
+        "label": "Type"
+      },
+      "addMoreBtn": "Add more"
+    },
+    "saveButton": "Save",
+    "storagesError": "At least one storage must be added!",
+    "msgs": {
+      "success": {
+        "title": "Saved successfully",
+        "subtitle": "Stash is ready"
+      }
+    }
+  },
+  "storageModifyModal": {
+    "addTitle": "Add storage",
+    "name": {
+      "label": "Name"
+    },
+    "storageType": {
+      "label": "Storage type"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Save"
+    }
+  },
+  "addFoodPage": {
+    "header": {
+      "title": "Add food",
+      "subtitle": "one or more"
+    },
+    "form": {
+      "storage": {
+        "label": "Storage"
+      },
+      "name": {
+        "label": "Name"
+      },
+      "category": {
+        "label": "Category"
+      },
+      "unitValue": {
+        "label": "Value"
+      },
+      "initialValue": {
+        "label": "Initial value"
+      },
+      "currentValue": {
+        "label": "Current value"
+      },
+      "unitType": {
+        "label": "Unit type"
+      },
+      "expirationDate": {
+        "label": "Expiration date",
+        "warning": "Date from past"
+      },
+      "autopredictCheckbox": {
+        "label": "Use autoprediction"
+      },
+      "eatenCheckbox": {
+        "label": "Eaten"
+      },
+      "openedCheckbox": {
+        "label": "Opened"
+      },
+      "uneatableCheckbox": {
+        "label": "Uneatable"
+      }
+    },
+    "buttons": {
+      "update": "Update",
+      "cancel": "Cancel",
+      "add": "Add",
+      "scrollDown": "Scroll to list",
+      "save": "Save"
+    },
+    "addedFoodList": {
+      "header": "To save",
+      "tip": "use form to add food",
+      "footer": {
+        "total": "Total: "
+      }
+    }
+  },
+  "foodUnitType": {
+    "ml": "ml",
+    "l": "l",
+    "g":"g",
+    "kg": "kg",
+    "pcs": "pcs",
+    "none": "/",
+    "findLabel":"Find type",
+    "noTypesLabel": "No matching type"
+  },
+  "foodCategory": {
+    "label": {
+      "drink": "Drink",
+      "sauce": "Sauce",
+      "meat": "Meat",
+      "bread": "Bread",
+      "dairy": "Dairy",
+      "vegetable": "Vegetable",
+      "fruit": "Fruit",
+      "sweets": "Sweets",
+      "meal": "Meal",
+      "other": "Other"
+    }
+  },
+  "foodStatusFilter" : {
+    "outdated": "Outdated",
+    "active": "Active",
+    "alerted": "Alerted",
+    "all": "Any"
+  },
+  "activeFoodTable": {
+    "buttons": {
+      "addFood": "Add food",
+      "throwOutdated": "Throw all expired"
+    },
+    "filters": {
+      "categories": "Categories",
+      "status": "Status",
+      "search": "Search",
+      "searchTip": "Type keywords",
+      "found": "Found"
+    },
+    "labels": {
+      "name": "Name",
+      "category": "Category",
+      "amount": "Amount",
+      "expiration": "Valid until",
+      "actions": "Actions"
+    },
+    "tips": {
+      "eatFood": "Eat food",
+      "throwFood": "Throw out food",
+      "editFood": "Edit food",
+      "detailsFood": "Show food details"
+    },
+    "noData": "Empty. Add food or change filters"
+  },
+  "historyFoodTable": {
+    "filters": {
+      "place": "Place",
+      "trash": "Trash",
+      "deleted": "Deleted",
+      "eaten": "Eaten"
+    },
+    "labels": {
+      "throwDate": "Throw date",
+      "deleteDate": "Delete date"
+    },
+    "tips": {
+      "trashToActiveFood": "Move to active food"
+    },
+    "noData": "Empty. Change filters or throw out food."
+  },
+  "foodModals": {
+    "eatFood": {
+      "title": "Consume food",
+      "currentAmount": "Current amount",
+      "leftAmount": "Will left",
+      "consumeAmount": "Will consume",
+      "setRemaining": "Set remaining instead",
+      "remainingAmountInput": "Remaining amount",
+      "consumeAmountInput": "Consume amount",
+      "eatInputLabel": "Eat amount",
+      "buttons": {
+        "all": "All",
+        "consume": "Consume",
+        "cancel": "Cancel"
+      }
+    },
+    "recoverFood": {
+      "title": "Food recovering",
+      "info": "Would you like to recover this food?",
+      "details": {
+        "name": "Name:",
+        "movedDate": "Moved date:"
+      },
+      "buttons": {
+        "ok": "Yes",
+        "cancel": "Cancel"
+      }
+    },
+    "toTrashFood": {
+      "titleTrash": "Move to trash",
+      "titleDelete": "Delete from storage",
+      "options": "Choose option",
+      "throwOption": {
+        "name": "Move to trash",
+        "tip": "Throw out to rubbish bin"
+      },
+      "deleteOption": {
+        "name": "Delete from storage",
+        "tip": "Delete when you don't want it"
+      },
+      "buttons": {
+        "trash": "To trash",
+        "delete": "Delete",
+        "cancel": "Cancel"
+      }
+    },
+    "editFood": {
+      "title": "Edit food",
+      "buttons": {
+        "edit": "Save",
+        "cancel": "Cancel"
+      }
+    },
+    "foodDetails": {
+      "title": "Food details",
+      "warning": {
+        "title": "Warning!",
+        "alert": "Expiration date alert"
+      },
+      "name": "Name:",
+      "category": "Category:",
+      "currentAmount": "Current amount:",
+      "expirationDate": "Expiration date:",
+      "processedDate": "Processed date:",
+      "foodStatus": "Food status:",
+      "addedDate": "Added:",
+      "initialAmount": "Initial amount:",
+      "freshScore": "Fresh score:"
+    }
+  },
+  "statisticTab": {
+    "dateRange": {
+      "week": "Week",
+      "month": "Month",
+      "custom": "Custom range"
+    },
+    "forceCheck": {
+      "title": "Force checking alerts" ,
+      "btn": "Check"
+    },
+    "overallSection": {
+      "title": "Overall",
+      "current": "Current",
+      "alert": "Alert",
+      "added": "Added",
+      "inTrash": "In Trash",
+      "deleted": "Deleted",
+      "eaten": "Eaten"
+    },
+    "statisticSection": {
+      "title": "Generate your statistics",
+      "dateInput": {
+        "label": "Choose date range",
+        "inputLabel": "Range",
+        "hint": "Start - End"
+      },
+      "buttons": {
+        "generate": "Generate statistics",
+        "last": "Show last generated"
+      }
+    },
+    "warnings": {
+      "emptyData": "Empty data"
+    }
+  },
+  "statisticGeneratedContent": {
+    "title": "Statistics for",
+    "charts": {
+      "foodActions": "Food actions",
+      "added": "Added",
+      "eaten": "Eaten",
+      "wasted": "Wasted",
+      "movedToTrash": "To trash",
+      "eatenAfter": "Eaten after expiration"
+    },
+    "summary":{
+      "title": "Summary",
+      "mostFreqAction": "Most frequent food action",
+      "mostFreqAdded": "Most frequent 'added' category",
+      "mostFreqWasted": "Most frequent 'wasted' category",
+      "mostFreqEaten": "Most frequent 'eaten' category",
+      "mostFreqTrash": "Most frequent 'to trash' category",
+      "mostFreqEatenAfter": "Most frequent 'eaten after expiration' category"
+    },
+    "summaryTip": {
+      "bad": {
+        "title": "Bad",
+        "info": "You threw out more then ate. Try to avoid it."
+      },
+      "neutral": {
+        "title": "Ok",
+        "info": "You threw out the same amount you ate. It's ok but could be better."
+      },
+      "neutralZero": {
+        "title": "Unrated",
+        "info": "Nothing was consumed or moved to trash."
+      },
+      "good": {
+        "title": "Good",
+        "info": "You ate more then threw out! Nice job!"
+      }
+    },
+    "emptyData": "Empty data, try changing date range"
+  },
+  "lastStatisticsModal": {
+    "title": "Last statistics",
+    "empty": "No recent statistics",
+    "buttons": {
+      "load": "Load",
+      "cancel": "Cancel"
+    }
+  },
+  "foodActions": {
+    "added": "added",
+    "eaten": "eaten",
+    "wasted": "wasted",
+    "deleted": "deleted",
+    "inTrash": "to trash",
+    "eatenAfter": "eaten after expiration"
+  },
+  "activationPage": {
+   "loading": "Activating account",
+    "error": "Incorrect activation link",
+    "msgs": {
+      "successTitle": "Account activated",
+      "body": "Now you can login"
+    }
+  },
+  "passwordResetting": {
+    "resetRequest": {
+      "title": "Reset password",
+      "subtitle": "Use your email",
+      "emailLabel": "Email",
+      "resetBtn": "Reset",
+      "successCard": {
+        "title": "Reset link sent",
+        "subtitle": "Check your mailing box"
+      }
+    },
+    "resetPage": {
+      "form": {
+        "title": "Setting a password",
+        "subtitle": "Use new and strong password",
+        "saveBtn": "Save"
+      },
+      "success": "Password changed successfully!",
+      "failure": "Error changing password! Try again!",
+      "failureLink": "Incorrect link",
+      "verification": "Reset verification"
+    },
+    "msgs": {
+      "changeSuccess": {
+        "title": "Password changed",
+        "subtitle": "You can login now!"
+      },
+      "changeFailure": {
+        "title": "Password not change",
+        "subtitle": "Try again!"
+      },
+      "sendSuccess": {
+        "title": "Resetting link send!",
+        "subtitle": "Check your email"
+      }
+    }
+  },
+  "stashModals": {
+    "share": {
+      "shareLabel": "Send invitation",
+      "pendingLabel": "Pending",
+      "title": "Share access",
+      "subtitle": "Enter the email to which the invitation link will be sent",
+      "sendInfo": "Email sent!",
+      "shareBtn": "Send invitation",
+      "cancelBtn": "Cancel",
+      "emptyPending": "No pending invitations",
+      "pendingHeaders": {
+        "email": "Email",
+        "delete": "Delete invitation"
+      },
+      "msgs": {
+        "sendSuccess": {
+          "title": "Invitation link sent",
+          "subtitle": "Wait for user response"
+        },
+        "pendingDelete": {
+          "title": "Invitation canceled",
+          "subtitle": "User {{ username }} is no longer invited"
+        }
+      }
+    },
+    "collaboration": {
+      "title": "Collaboration",
+      "subtitle": "Current users",
+      "owner": "owner",
+      "guest": "guest",
+      "back": "Back",
+      "removing": "Removing"
+    }
+  },
+  "stashShareAccept": {
+    "loading": "Accepting invitation",
+    "error": "Incorrect invitation link",
+    "msgs": {
+      "success": {
+        "title": "Invitation accepted!",
+        "subtitle": "Check your stashes"
+      }
+    }
+  },
+  "dashboard":{
+    "title": "Welcome",
+    "numOfStorages": "Storages",
+    "numOfStashes": "Stashes",
+    "numOfAlerts": "Alerts",
+    "numOfActiveFood": "Active food",
+    "buttons": {
+      "goToStash": "Go to Stashes",
+      "addStash": "Add Stash"
+    }
+  },
+  "userInfo": {
+    "profile": {
+      "email": "Email",
+      "user": "User",
+      "buttons": {
+        "changePass": "Change password"
+      }
+    }
+  },
+  "pageNotFound": {
+    "text": "Page not found"
+  },
+  "storagePage": {
+    "tabTitles": {
+      "table": "Active",
+      "history": "History",
+      "details": "Details"
+    }
+  }
+}

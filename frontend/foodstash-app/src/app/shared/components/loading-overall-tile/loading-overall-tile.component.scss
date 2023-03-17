@@ -1,0 +1,19 @@
+.overall-card{
+  width: 100px;
+  height: 100px;
+}
+
+.loading-title-div{
+  height: 20px;
+  width: 100%;
+}
+
+
+.card-content{
+  height: 70%;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

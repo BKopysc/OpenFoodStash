@@ -1,0 +1,94 @@
+@import "src/sass/variables";
+@import "@angular/material/theming";
+$primary-color: mat-color($my-primary);
+$base-color: mat-color($my-primary, 0.7);
+
+
+.tile-div{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 2px solid $base-color;
+  background-color: $base-color;
+  border-radius: 15px;
+  padding: 8px 8px;
+}
+
+
+.name-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.warning-icon{
+  color: #e5af4e;
+}
+
+.name-span{
+  color: white;
+}
+
+.cat-value-row{
+  display: flex;
+  //justify-content: center;
+  align-items: baseline;
+  font-size: 16px;
+  color: white;
+  font-weight: 400;
+  padding-bottom: 5px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.78);
+}
+
+.category-row{
+  margin-left: auto;
+}
+
+.date-row{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.date-trans{
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.date-value{
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.actions-row{
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.color--eat{
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.color--delete{
+  color: #7e1919;
+}
+
+.color--info{
+  color: $primary-color
+}
+
+.color--edit{
+  color: $primary-color
+}
+
+.warning-border{
+  border-color: #e5af4e !important;
+}

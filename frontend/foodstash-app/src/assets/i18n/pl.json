@@ -1,0 +1,617 @@
+{
+  "about": {
+    "title": "Foodstash",
+    "subtitle": "aplikacja do zarządzania żywnością",
+    "whyTitle": "Dlaczego powinienem zacząć korzystać z aplikacji?",
+    "whyAnswer": "Foodstash pomoże Ci ograniczyć marnowanie żywności w twoim otoczeniu. Dodatkowo zaoszczędzisz pieniądze dzięki cennym informacjom o posiadanej żywności i efektywnej wyszukiwarce. Już nigdy nie zapomnisz o zakupionym w zeszłym miesiącu mleku!",
+    "optionsTitle": "Szczegółowe możliwości aplikacji:",
+    "quickOffers": {
+      "offer1": "Osobiste konto",
+      "offer2": "Zarządzanie żywnością",
+      "offer3": "Łatwe przeszukiwanie żywności",
+      "offer4": "Alerty dla żywności",
+      "offer5": "Współpraca dla Schowka",
+      "offer6": "Statystyki dla Składziku"
+    },
+    "optionsList": {
+      "options1": "Posiadanie osobistego konta z żywnością",
+      "options2": "Tworzenie różnych rodzajów Schowków (przestrzeni do przechowywania Skrytek)",
+      "options3": "Przypisywanie Skrytek (pomniejszych przestrzeni) do Schowka",
+      "options4": "Dodawanie żywności do Skrytek",
+      "options5": "Kompleksowe przeglądanie żywności po kategoriach i statusie",
+      "options6": "Wyszukiwarka do żywności",
+      "options7": "Sortowanie żywności m.in. po nazwie oraz terminie ważności",
+      "options8": "Spożywanie, wyrzucanie oraz usuwanie żywności",
+      "options9": "Przeglądanie oraz przywracanie usuniętej i wyrzucnej żywności",
+      "options10": "Generowanie wykresów i statystyk z danego przedziału czasowego",
+      "options11": "Dodawnanie innych użytkowników do wspólnej współpracy w obrębie Schowku"
+    },
+    "faqTitle": "Najczęściej zadawane pytania",
+    "faqList": {
+      "faq1": "Czym jest Schowek i Składzik?",
+      "faqAnswer1_1": "Schowek jest to ogólna przestrzeń zawierająca Składziki. Składzik natomiast zawiera żywność.",
+      "faqAnswer1_2": "Przykład: Jan ma dom w Warszawie i Krakowie. Jeden z jego Schowków nazywa się: 'Warszawski dom'. W Schowku ma Składziki nazwane 'lodówka w kuchni' oraz 'zamrażalka w piwnicy'"
+    }
+  },
+  "navbar": {
+    "login": "Logowanie",
+    "signUp": "Rejestracja",
+    "about": "Informacje",
+    "stash": "Schowki",
+    "language": "Język",
+    "profile": "Profil",
+    "home": "Strona główna",
+    "logout": "Wyloguj"
+  },
+  "paginator": {
+    "itemsPerPageLabel": "Elementy na stronę",
+    "lastPageLabel": "Ostatnia strona",
+    "nextPageLabel": "Następna strona",
+    "previousPageLabel": "Poprzednia strona",
+    "firstPageLabel": "Pierwsza strona",
+    "pageOneOne": "Strona 1 z 1",
+    "pageOfOf": "Strona {{first}} z {{second}}"
+  },
+  "globalButtons": {
+    "back": "Powrót"
+  },
+  "gender": {
+    "male": "Mężczyzna",
+    "female": "Kobieta",
+    "other": "Inne"
+  },
+  "basicFormErrors": {
+    "required": "Wymagane",
+    "minLen": "Za krótkie. Min: {{ minLen }} znaków",
+    "maxLen": "Za długie. Max: {{ maxLen }} znaków",
+    "notEmail": "Email jest niepoprawny",
+    "yourEmail": "Ten email należy do Ciebie"
+  },
+  "auth": {
+    "registerSuccess":  {
+      "header": "Sukces!",
+      "text": "Możesz teraz się zalogować!"
+    },
+    "loginForm": {
+      "mainTitle": "Zaloguj",
+      "subTitle": "Użyj swoich danych",
+      "email": {
+        "label": "Email"
+      },
+      "password": {
+        "label": "Hasło"
+      },
+      "forgotPassword": {
+        "label": "Zapomniałem hasła"
+      },
+      "loginButton": {
+        "label": "Zaloguj"
+      },
+      "signUpButton": {
+        "or": "lub",
+        "label": "Zarejestruj się!"
+      }
+    },
+    "signupForm": {
+      "mainTitle": "Nowe konto",
+      "subtitle": "Uzupełnij poniższe informacje, aby rozpocząć!",
+      "email": {
+        "label": "Email"
+      },
+      "name": {
+        "label": "Imię"
+      },
+      "surname": {
+        "label": "Nazwisko"
+      },
+      "birthDate": {
+        "label": "Data urodzenia",
+        "tipLabel": "Informacja o wieku",
+        "tip": "Musisz mieć co najmniej 13 lat"
+      },
+      "gender": {
+        "label": "Płeć"
+      },
+      "password": {
+        "firstLabel": "Hasło",
+        "secondLabel": "Powtórz hasło",
+        "passwordIncorrect":{
+          "line1": "Hasło powinno mieć co najmniej::",
+          "line2": "8 znaków",
+          "line3": "Jedna duża litera",
+          "line4": "Jedna mała litera",
+          "line5": "Specjalny znak: !@#$%^&*",
+          "notMatch": "Hasła nie są identyczne"
+        },
+        "tip": "Użyj silnego hasła. Podążaj za wskazówkami podczas wpisywania",
+        "tipLabel": "Wskazówka dotycząca hasła"
+      },
+      "rulesCheck": {
+        "label": "Akceptuję ",
+        "ruleLink": "regulamin"
+      },
+      "submitButton": {
+        "label": "Zarejestruj!"
+      },
+      "activationLink": "Wejdź w email z wysłanym linkiem aktywacyjnym",
+      "emailNotSend": "Wiadomość nie dotarła? Sprawdź w spamie lub wciśnij przycisk:",
+      "resendLink": "Wyślij ponownie"
+    }
+  },
+  "storageType": {
+    "fridge": "Lodówka",
+    "freezer": "Zamrażalka",
+    "shelf": "Szafka",
+    "other": "Inne"
+  },
+  "stashManagement": {
+    "emptyStashLabel": "Pusto...",
+    "mainLabel": "Twoje schowki",
+    "stashDetails": {
+      "personal": "prywatny",
+      "shared": "udostępniony",
+      "oneItem": "składzik",
+      "items": "składy"
+    },
+    "buttons": {
+      "storage": "Składziki",
+      "open": "Otwórz",
+      "share": "Udostępnij",
+      "newStash": "Nowy schowek",
+      "newStorage": "Dodaj składzik"
+    }
+  },
+  "stashModify": {
+    "addTitle": "Nowy schowek",
+    "addSubtitle": "uzupełnij informacje",
+    "name": {
+      "label": "Nazwa",
+      "placeholder": "Dom"
+    },
+    "storages": {
+      "label": "Składziki:",
+      "name": {
+        "label": "Nazwa",
+        "placeholder": "Biała lodówka"
+      },
+      "type": {
+        "label": "Rodzaj"
+      },
+      "addMoreBtn": "Dodaj więcej"
+    },
+    "saveButton": "Zapisz",
+    "storagesError": "Co najmniej jeden składzik musi zostać dodany!",
+    "msgs": {
+      "success": {
+        "title": "Pomyślnie zapisano",
+        "subtitle": "Schowek jest gotowy"
+      }
+    }
+  },
+  "storageModifyModal": {
+    "addTitle": "Dodaj składzik",
+    "name": {
+      "label": "Nazwa"
+    },
+    "storageType": {
+      "label": "Rodzaj"
+    },
+    "buttons": {
+      "cancel": "Anuluj",
+      "save": "Zapisz"
+    }
+  },
+  "addFoodPage": {
+    "header": {
+      "title": "Dodaj żywność",
+      "subtitle": "jedną lub wiele"
+    },
+    "form": {
+      "storage": {
+        "label": "Schowek"
+      },
+      "name": {
+        "label": "Nazwa"
+      },
+      "category": {
+        "label": "Kategoria"
+      },
+      "unitValue": {
+        "label": "Ilość"
+      },
+      "initialValue": {
+        "label": "Ilość początkowa"
+      },
+      "currentValue": {
+        "label": "Ilość obecna"
+      },
+      "unitType": {
+        "label": "Miara"
+      },
+      "expirationDate": {
+        "label": "Data ważności",
+        "warning": "Data przeszła"
+      },
+      "freshScore": {
+        "label": "Ocena świeżości"
+      },
+      "autopredictCheckbox": {
+        "label": "Użyj autopredykcji"
+      },
+      "eatenCheckbox": {
+        "label": "Zjedzone"
+      },
+      "openedCheckbox": {
+        "label": "Otwarte"
+      },
+      "uneatableCheckbox": {
+        "label": "Zepsute"
+      }
+    },
+    "buttons": {
+      "update": "Zaktualizuj",
+      "cancel": "Anuluj",
+      "add": "Dodaj",
+      "scrollDown": "Zejdź do listy",
+      "save": "Zapisz"
+    },
+    "addedFoodList": {
+      "header": "Do zapisania",
+      "tip": "użyj formularza aby dodać",
+      "footer": {
+        "total": "Łącznie: "
+      }
+    }
+  },
+  "foodUnitType": {
+    "ml": "ml",
+    "l": "l",
+    "g":"g",
+    "kg": "kg",
+    "pcs": "szt",
+    "none": "/",
+    "findLabel":"Wpisz typ",
+    "noTypesLabel": "Nie znaleziono"
+  },
+  "foodCategory": {
+    "label": {
+      "drink": "Napój",
+      "sauce": "Sos",
+      "meat": "Mięso",
+      "bread": "Pieczywo",
+      "dairy": "Nabiał",
+      "vegetable": "Warzywa",
+      "fruit": "Owoce",
+      "sweets": "Słodycze",
+      "meal": "Dania",
+      "other": "Inne"
+    }
+  },
+  "foodStatusFilter" : {
+    "outdated": "Po terminie",
+    "active": "Aktualne",
+    "alerted": "Alert",
+    "all": "Dowolne"
+  },
+  "activeFoodTable": {
+    "buttons": {
+      "addFood": "Dodaj żywność",
+      "throwOutdated": "Wyrzuć przeterminowane"
+    },
+    "filters": {
+      "categories": "Kategorie",
+      "status": "Status",
+      "search": "Wyszukaj",
+      "searchTip": "Wpisz słowa",
+      "found": "Znaleziono"
+    },
+    "labels": {
+      "name": "Nazwa",
+      "category": "Kategoria",
+      "amount": "Ilość",
+      "expiration": "Ważne do",
+      "actions": "Akcje"
+    },
+    "tips": {
+      "eatFood": "Spożyj żywność",
+      "throwFood": "Wyrzuć żywność",
+      "editFood": "Edytuj żywność",
+      "detailsFood": "Pokaż szczegóły żywności"
+    },
+    "noData": "Pusto. Dodaj żywność lub zmień filtry"
+  },
+  "historyFoodTable": {
+    "filters": {
+      "place": "Miejsce",
+      "trash": "Kosz",
+      "deleted": "Usunięte",
+      "eaten": "Zjedzone"
+    },
+    "labels": {
+      "throwDate": "Data wyrzucenia",
+      "deleteDate": "Data usunięcia"
+    },
+    "tips": {
+      "recoverToActiveFood": "Przywróć do aktywnej żywności"
+    },
+    "noData": "Pusto. Zmień filtry lub wyrzuć żywność."
+  },
+  "foodModals": {
+    "eatFood": {
+      "title": "Spożyj żywność",
+      "currentAmount": "Aktualna ilość",
+      "leftAmount": "Zostanie",
+      "consumeAmount": "Spożyto",
+      "setRemaining": "Ustaw ilość, która pozostanie",
+      "remainingAmountInput": "Pozostała ilość",
+      "consumeAmountInput": "Spożyta ilość",
+      "buttons": {
+        "all": "Wszystko",
+        "consume": "Spożyj",
+        "cancel": "Anuluj"
+      }
+    },
+    "recoverFood": {
+      "title": "Przywracanie żywności",
+      "info": "Czy chcesz przywrócić tą żywność?",
+      "details": {
+        "name": "Nazwa:",
+        "movedDate": "Data przeniesienia:"
+      },
+      "buttons": {
+        "ok": "Tak",
+        "cancel": "Anuluj"
+      }
+    },
+    "toTrashFood": {
+      "titleTrash": "Wyrzuć do kosza",
+      "titleDelete": "Usuń ze składziku",
+      "options": "Wybierz opcję",
+      "throwOption": {
+        "name": "Wyrzuć do kosza",
+        "tip": "Wyrzuć żywność do kosza"
+      },
+      "deleteOption": {
+        "name": "Usuń ze składziku",
+        "tip": "Usuń, jeśli nie chcesz tej żywności"
+      },
+      "buttons": {
+        "trash": "Do kosza",
+        "delete": "Usuń",
+        "cancel": "Anuluj"
+      }
+    },
+    "editFood": {
+      "title": "Edytuj żywność",
+      "buttons": {
+        "edit": "Zapisz",
+        "cancel": "Anuluj"
+      }
+    },
+    "foodDetails": {
+      "title": "Szczegóły żywności",
+      "warning": {
+        "title": "Ostrzeżenie!",
+        "alert": "Uwaga na datę ważności"
+      },
+      "name": "Nazwa:",
+      "category": "Kategoria:",
+      "currentAmount": "Obecna ilość:",
+      "expirationDate": "Data ważności:",
+      "processedDate": "Data przeniesienia:",
+      "foodStatus": "Status żywności:",
+      "addedDate": "Dodano:",
+      "initialAmount": "Początkowa ilość:",
+      "freshScore": "Ocena jakości:"
+    }
+  },
+  "statisticTab": {
+    "dateRange": {
+      "week": "Tydzień",
+      "month": "Miesiąc",
+      "custom": "Zakres dat"
+    },
+    "forceCheck": {
+      "title": "Zażądaj sprawdzenia alertów" ,
+      "btn": "Sprawdź"
+    },
+    "overallSection": {
+      "title": "Ogólne podsumowanie",
+      "current": "Obecnie",
+      "alert": "Alerty",
+      "added": "Dodano",
+      "inTrash": "W koszu",
+      "deleted": "Usunięto",
+      "eaten": "Zjedzone"
+    },
+    "statisticSection": {
+      "title": "Wygeneruj statystyki",
+      "dateInput": {
+        "label": "Wybierz zakres dat",
+        "inputLabel": "Zakres",
+        "hint": "Start - Koniec"
+      },
+      "buttons": {
+        "generate": "Wygeneruj statystyki",
+        "last": "Pokaż ostatnio wygenerowane"
+      }
+    },
+    "warnings": {
+      "emptyData": "Brak danych"
+    }
+  },
+  "statisticGeneratedContent": {
+    "title": "Statystyki dla",
+    "charts": {
+      "foodActions": "Akcje związane z żywnością",
+      "added": "Dodana żywność",
+      "eaten": "Zjedzona żywność",
+      "wasted": "Zmarnowana żywność",
+      "movedToTrash": "Wyrzucona żywność",
+      "eatenAfter": "Spożyta żywność po terminie ważności"
+    },
+    "summary":{
+      "title": "Podsumowanie",
+      "mostFreqAction": "Najczęstsza akcja związania z jedzeniem",
+      "mostFreqAdded": "Najczęściej dodawana kategoria",
+      "mostFreqWasted": "Najczęściej marnowana kategoria",
+      "mostFreqEaten": "Najczęściej spożywana kategoria",
+      "mostFreqTrash": "Najczęściej wyrzucana kategoria",
+      "mostFreqEatenAfter": "Najczęściej spożywana po terminie ważności kategoria"
+    },
+    "summaryTip": {
+      "bad": {
+        "title": "Słabo",
+        "info": "Wyrzucono więcej niż spożyto. Staraj się unikać takich zachowań."
+      },
+      "neutral": {
+        "title": "Ok",
+        "info": "Wyrzucono tyle samo co spożyto. Jest dobrze, ale mogło być lepiej."
+      },
+      "neutralZero": {
+        "title": "Bez oceny",
+        "info": "Nic nie spożyto, ani nie wyrzucono"
+      },
+      "good": {
+        "title": "Wspaniale",
+        "info": "Zjedzono więcej niż wyrzucono. Dobra robota!"
+      }
+    },
+    "emptyData": "Brak danych, spróbuj zmienić zakres dat"
+  },
+  "lastStatisticsModal": {
+    "title": "Ostatnie statystyki",
+    "empty": "Brak ostatnich statystyk",
+    "buttons": {
+      "load": "Załaduj",
+      "cancel": "Anuluj"
+    }
+  },
+  "foodActions": {
+    "added": "dodano",
+    "eaten": "spożyto",
+    "wasted": "zmarnowano",
+    "deleted": "usunięto",
+    "inTrash": "do kosza",
+    "eatenAfter": "spożyto po terminie"
+  },
+  "activationPage": {
+    "loading": "Aktywowanie konta",
+    "error": "Niepoprawny link aktywujący",
+    "msgs": {
+      "successTitle": "Konto aktywowano",
+      "body": "Możesz teraz się zalogować"
+    }
+  },
+  "passwordResetting": {
+    "resetRequest": {
+      "title": "Resetowanie hasła",
+      "subtitle": "Użyj swojego emaila",
+      "emailLabel": "Email",
+      "resetBtn": "Reset",
+      "successCard": {
+        "title": "Wysłano link do resetowania",
+        "subtitle": "Sprawdź swoją skrzynkę email"
+      }
+    },
+    "resetPage": {
+      "form": {
+        "title": "Zmiana hasła",
+        "subtitle": "Użyj nowego i silnego hasła",
+        "saveBtn": "Zapisz"
+      },
+      "success": "Hasło poprawnie zmieniono!",
+      "failure": "Błąd podczas zmiany hasła! Spróbuj ponownie!",
+      "failureLink": "Niepoprawny link",
+      "verification": "Weryfikacja"
+    },
+    "msgs": {
+      "changeSuccess": {
+        "title": "Hasło zmieniono",
+        "subtitle": "Możesz się teraz zalogować!"
+      },
+      "changeFailure": {
+        "title": "Hasło nie zmieniono",
+        "subtitle": "Spróbuj ponownie!"
+      },
+      "sendSuccess": {
+        "title": "Wysłano link!",
+        "subtitle": "Sprawdź swoją skrzynkę email"
+      }
+    }
+  },
+  "stashModals": {
+    "share": {
+      "title": "Udostępnij dostęp",
+      "shareLabel": "Wyślij zaproszenie",
+      "pendingLabel": "Oczekujące",
+      "subtitle": "Wpisz email na który będzie wysłany link z zaproszeniem",
+      "sendInfo": "Wysłano email!",
+      "shareBtn": "Wyślij zaproszenie",
+      "cancelBtn": "Anuluj",
+      "emptyPending": "Brak oczekujących zaproszeń",
+      "pendingHeaders": {
+        "email": "Email",
+        "delete": "Usuń zaproszenie"
+      },
+      "msgs": {
+        "sendSuccess": {
+          "title": "Wysłano link z zaproszeniem",
+          "subtitle": "Czekaj na odpowiedź użytkownika"
+        },
+        "pendingDelete": {
+          "title": "Anulowano zaproszenie",
+          "subtitle": "Użytkownik {{ username }} już nie jest zaproszony"
+        }
+      }
+    },
+    "collaboration": {
+      "title": "Współpraca",
+      "subtitle": "Obecni użytkownicy",
+      "owner": "właściciel",
+      "guest": "gość",
+      "back": "Wróć",
+      "removing": "Usuwanie"
+    }
+  },
+  "stashShareAccept": {
+    "loading": "Akceptowanie zaproszenia",
+    "error": "Niepoprawny link z zaproszeniem",
+    "msgs": {
+      "success": {
+        "title": "Zaproszenie zaakceptowane!",
+        "subtitle": "Sprwadź swoje schowki"
+      }
+    }
+  },
+  "dashboard":{
+    "title": "Witaj",
+    "numOfStorages": "Składziki",
+    "numOfStashes": "Schowki",
+    "numOfAlerts": "Alerty",
+    "numOfActiveFood": "Żywność",
+    "buttons": {
+      "goToStash": "Przejdź do Schowków",
+      "addStash": "Dodaj Schowek"
+    }
+  },
+  "userInfo": {
+    "profile": {
+      "email": "Email",
+      "user": "Dane",
+      "buttons": {
+        "changePass": "Zmień hasło"
+      }
+    }
+  },
+  "pageNotFound": {
+    "text": "Strony nie znaleziono"
+  },
+  "storagePage": {
+    "tabTitles": {
+      "table": "Aktualne",
+      "history": "Historia",
+      "details": "Szczegóły"
+    }
+  }
+}

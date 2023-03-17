@@ -1,0 +1,86 @@
+<div class="auto-flex content-bottom-top-80 top-button-relative">
+  <app-back-top-button [fixedClass]="(isHandset$ | async)" [routeLink]="backRouterLink"></app-back-top-button>
+  <mat-card class="form-mat-card-mw500">
+    <mat-card-title class="form-card-title-centered">
+      {{title | translate}}
+    </mat-card-title>
+    <mat-card-subtitle class="form-card-subtitle-centered">
+      {{subtitle | translate}}
+    </mat-card-subtitle>
+    <mat-card-content>
+      <form [formGroup]="stashCreateForm">
+
+        <mat-form-field appearance="fill" class="form-card-field-100">
+          <mat-label>{{'stashModify.name.label' | translate}}</mat-label>
+          <input formControlName="name" matInput placeholder="{{'stashModify.name.placeholder' | translate}}">
+          <mat-error>
+            <span *ngIf="stashErrorHandling.errorHandling('name','required')">
+               {{ 'basicFormErrors.required' | translate}}
+            </span>
+            <span *ngIf="stashErrorHandling.errorHandling('name','minlength')">
+               {{ 'basicFormErrors.minLen' | translate: {minLen: stashErrorHandling.getLenValidator('name', 'minlength')} }}
+            </span>
+            <span *ngIf="stashErrorHandling.errorHandling('name','maxlength')">
+               {{ 'basicFormErrors.maxLen' | translate: {maxLen: stashErrorHandling.getLenValidator('name', 'maxlength')} }}
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <h3 class="storage-label" [ngClass]="errorsMessages.length > 0 ? 'storage-label-error' : ''">
+          {{'stashModify.storages.label' | translate}}
+        </h3>
+        <div class="storage-form-array">
+          <ng-container formArrayName="storages">
+            <ng-container *ngFor="let storageForm of storagesArr.controls; let i = index">
+              <div [formGroupName]="i" class="storage-form-fields">
+
+                <mat-form-field appearance="outline" class="storage-name-field">
+                  <mat-label>{{'stashModify.storages.name.label' | translate}}</mat-label>
+                  <input matInput formControlName="name" placeholder="{{'stashModify.storages.name.placeholder' | translate}}">
+                  <mat-error>
+                    <span *ngIf="storageForm.get('name')!.errors! && storageForm.get('name')!.hasError('required') ">
+                      {{ 'basicFormErrors.required' | translate}}
+                    </span>
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="storage-type-field">
+                  <mat-label>{{'stashModify.storages.type.label' | translate}}</mat-label>
+                  <mat-select formControlName="storageType">
+                    <mat-option *ngFor="let storageIt of storageTransArr" [value]="storageIt.name">
+                      {{storageIt.value | translate}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <button mat-icon-button color="primary"
+                        (click)="deleteStorageFromArr(i)"
+                        class="delete-storage-button"
+                        type="button"
+                >
+                  <mat-icon fontIcon="close" class="delete-font-icon"></mat-icon>
+                </button>
+              </div>
+            </ng-container>
+
+            <button mat-button color="primary"
+                    (click)="addStorage()"
+                    class="add-storage-button button-with-left-icon">
+              <mat-icon fontIcon="add"></mat-icon>
+              <span>{{'stashModify.storages.addMoreBtn' | translate}}</span>
+            </button>
+          </ng-container>
+        </div>
+
+        <app-error-form-div [errorInput]="errorsMessages">
+
+        </app-error-form-div>
+
+        <button mat-flat-button [loading]="loading" color="primary" class="save-button" (click)="onSave()">
+          {{'stashModify.saveButton' | translate}}
+        </button>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

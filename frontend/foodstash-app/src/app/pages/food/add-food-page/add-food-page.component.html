@@ -1,0 +1,218 @@
+<div class="main-div content-bottom-top-80 top-button-relative"
+     [ngClass]="(isHandset$ | async) ? 'main-div-fixed' : ''">
+  <app-back-top-button [fixedClass]="(isHandset$ | async)" [routeLink]="backURL" ></app-back-top-button>
+  <mat-card class="form-mat-card">
+    <mat-card-title class="form-card-title-centered">
+      {{ 'addFoodPage.header.title' | translate }}
+    </mat-card-title>
+    <mat-card-subtitle class="form-card-subtitle-centered">
+      {{ 'addFoodPage.header.subtitle' | translate }}
+    </mat-card-subtitle>
+
+    <ng-container *ngIf="initLoading;else mat_card_loaded">
+      <div class="init-spinner">
+        <mat-spinner diameter="25"></mat-spinner>
+      </div>
+    </ng-container>
+
+    <ng-template #mat_card_loaded>
+      <mat-card-content>
+        <form [formGroup]="foodForm" #form_el="ngForm">
+          <mat-form-field appearance="fill" class="form-card-field-100">
+            <mat-label>{{ 'addFoodPage.form.storage.label' | translate }}</mat-label>
+            <mat-select (selectionChange)="onStorageSelect($event)" disableOptionCentering formControlName="storageId">
+              <mat-select-trigger *ngIf="this.selectedStorage">
+                <span>{{selectedStorage.name}}</span>
+                <span class="storage-select-stashName">{{selectedStorage.stashName}}</span>
+              </mat-select-trigger>
+              <mat-option *ngFor="let storage of availableStorages" [value]="storage.id">
+                <span class="storage-select-id">{{storage.id}}</span>
+                <span>{{storage.name}}</span>
+                <span class="storage-select-stashName">{{storage.stashName}}</span>
+                <span class="storage-select-storageType">{{getStorageType(storage.storageType) | translate}}</span>
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              <p *ngIf="formErrorHandling.errorHandling('storageId','required')">
+                {{ 'basicFormErrors.required' | translate}}
+              </p>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="form-card-field-100">
+            <mat-label>{{ 'addFoodPage.form.name.label' | translate }}</mat-label>
+            <input formControlName="name" matInput placeholder="Milk">
+            <mat-error>
+              <p *ngIf="formErrorHandling.errorHandling('name','required')">
+                {{ 'basicFormErrors.required' | translate}}
+              </p>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="form-card-field-100">
+            <mat-label>{{ 'addFoodPage.form.category.label' | translate }}</mat-label>
+            <mat-select disableOptionCentering formControlName="category">
+              <mat-option *ngFor="let category of categories$ | async" [value]="category.id">
+                {{foodCategoryTrans.getTranslated(category.name) | translate}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              <p *ngIf="formErrorHandling.errorHandling('category','required')">
+                {{ 'basicFormErrors.required' | translate}}
+              </p>
+            </mat-error>
+          </mat-form-field>
+
+          <div class="unit-form-div">
+            <mat-form-field appearance="fill" class="unit-form-field">
+              <mat-label>{{ 'addFoodPage.form.unitValue.label' | translate }}</mat-label>
+              <input formControlName="initialUnitValue" matInput placeholder="Milk">
+              <mat-error>
+                <p *ngIf="formErrorHandling.errorHandling('initialUnitValue','required')">
+                  {{ 'basicFormErrors.required' | translate}}
+                </p>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="unit-form-field">
+              <mat-label>{{ 'addFoodPage.form.unitType.label' | translate }}</mat-label>
+              <mat-select #singleSelect disableOptionCentering formControlName="unitType" placeholder="ml">
+                <mat-option>
+                  <ngx-mat-select-search
+                    [formControl]="unitTypeFilterCtrl"
+                    [noEntriesFoundLabel]="'foodUnitType.noTypesLabel' | translate"
+                    [placeholderLabel]="'foodUnitType.findLabel' | translate">
+                  </ngx-mat-select-search>
+                </mat-option>
+                <mat-option *ngFor="let unitType of filteredUnitTypes | async" [value]="unitType.name">
+                  {{unitType.trans}}
+                </mat-option>
+              </mat-select>
+              <mat-error>
+                <p *ngIf="formErrorHandling.errorHandling('unitType','required')">
+                  {{ 'basicFormErrors.required' | translate}}
+                </p>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <ng-container *ngIf="showExpirationDate">
+            <mat-form-field appearance="fill" class="form-card-field-100">
+              <mat-label>{{ 'addFoodPage.form.expirationDate.label' | translate }}</mat-label>
+              <input #date_ref [matDatepicker]="picker" [min]="minDate" formControlName="expirationDate" matInput
+                     (dateInput)="onExpirationDateChange()">
+              <mat-error>
+                <p *ngIf="formErrorHandling.errorHandling('expirationDate','required')">
+                  {{ 'basicFormErrors.required' | translate}}
+                </p>
+              </mat-error>
+              <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div class="past-date-warning" *ngIf="expirationDateFromPast">
+              <mat-icon class="past-date-icon">warning</mat-icon>
+              <span>{{ 'addFoodPage.form.expirationDate.warning' | translate }}</span>
+            </div>
+          </ng-container>
+
+          <div class="autopredict-section">
+            <mat-checkbox (change)="onAutoPredictClick()" color="accent" formControlName="autoPredict">
+              <span>{{ 'addFoodPage.form.autopredictCheckbox.label' | translate }}</span>
+            </mat-checkbox>
+          </div>
+
+          <div *ngIf="showFreshScore" class="star-score-div">
+            <star-rating-control [labelText]="'addFoodPage.form.freshScore.label' | translate"
+                                 [size]="'large'"
+                                 formControlName="freshScore"></star-rating-control>
+            <p *ngIf="formErrorHandling.errorHandling('freshScore','required')" class="star-score-error">
+              {{ 'basicFormErrors.required' | translate}}
+            </p>
+          </div>
+
+          <div class="addons-section">
+            <mat-checkbox color="primary" formControlName="isEaten">
+              <span>{{ 'addFoodPage.form.eatenCheckbox.label' | translate }}</span>
+            </mat-checkbox>
+            <mat-checkbox color="primary" formControlName="isOpen">
+              <span>{{ 'addFoodPage.form.openedCheckbox.label' | translate }}</span>
+            </mat-checkbox>
+          </div>
+
+          <div class="button-col">
+
+            <ng-container *ngIf="selectedFood.length !== 0">
+              <div class="food-update-buttons">
+                <button mat-stroked-button (click)="onUpdateFood()" color="primary" [disabled]="sendingLoading">
+                  {{ 'addFoodPage.buttons.update' | translate }}
+                </button>
+                <button mat-stroked-button (click)="onCancelUpdateFood()" color="warn" [disabled]="sendingLoading">
+                  {{ 'addFoodPage.buttons.cancel' | translate }}
+                </button>
+              </div>
+
+            </ng-container>
+
+            <button (click)="onAddMore()" class="button-with-left-icon" color="accent" mat-flat-button [disabled]="sendingLoading">
+              <mat-icon fontIcon="add"></mat-icon>
+              <span>{{ 'addFoodPage.buttons.add' | translate }}</span>
+            </button>
+
+            <button  class="button-with-left-icon" color="primary" (click)="scrollDown(save_list_btn)" mat-flat-button *ngIf="isHandset$ | async">
+              <mat-icon fontIcon="arrow_down"></mat-icon>
+              <span>{{ 'addFoodPage.buttons.scrollDown' | translate }}</span>
+            </button>
+          </div>
+
+        </form>
+
+      </mat-card-content>
+    </ng-template>
+  </mat-card>
+
+  <div class="added-food-list" [ngClass]="(isHandset$ | async) ? 'added-food-list-fixed' : ''">
+    <div class="food-list-title">
+      <h2>{{ 'addFoodPage.addedFoodList.header' | translate }}</h2>
+      <div class="title-divider"></div>
+    </div>
+
+    <mat-selection-list #added_foods [multiple]="false" [disableRipple]="true" [(ngModel)]="selectedFood"
+                        (selectionChange)="selectedFoodChange($event)"  class="list-options-div" [disabled]="sendingLoading">
+      <mat-list-item class="empty-list-item" *ngIf="addedFoods.length === 0">
+        <p>{{ 'addFoodPage.addedFoodList.tip' | translate }}</p>
+      </mat-list-item>
+      <mat-list-option *ngFor="let food of addedFoods; let i = index" [value]="food" class="list-option-div" >
+        <div class="food-select-div">
+          <div class="food-item-text-div">
+            <span class="food-item-number">#{{i+1}}</span>
+            <span class="food-item-title">{{food.name}}</span>
+            <div class="food-subitem-div">
+              <div>
+                <span>{{food.initialUnitValue}} </span>
+                <span>{{unitTypesTrans.get(food.unitType)! | translate}}</span>
+              </div>
+              <span>{{food.storageName}}</span>
+            </div>
+
+          </div>
+          <button mat-icon-button class="delete-food-button" (click)="deleteFoodFromList(food)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+
+      </mat-list-option>
+    </mat-selection-list>
+
+    <div class="add-list-footer" [ngClass]="addedFoods.length === 0 ? 'add-list-footer-hidden' : ''">
+      <div class="add-list-divider"></div>
+      <span>{{ 'addFoodPage.addedFoodList.footer.total' | translate }} {{addedFoods.length}}</span>
+      <div  #save_list_btn>
+        <button mat-flat-button color="primary" class="add-list-save-button" (click)="saveFoodList()" [loading]="sendingLoading">
+          {{ 'addFoodPage.buttons.save' | translate }}
+        </button>
+      </div>
+    </div>
+
+
+  </div>
+</div>

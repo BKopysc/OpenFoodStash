@@ -1,0 +1,38 @@
+.collaborator-div{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.user-divider{
+  margin-top: 5px;
+}
+
+.collaborator-name-div{
+  display: flex;
+  flex-direction: column;
+  gap:2px;
+}
+
+.collaborator-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.collaborator-type{
+  font-size: 12px;
+  color: grey;
+}
+
+.action-button{
+  margin-left: auto;
+}
+
+.main-dialog{
+  padding-bottom: 10px;
+}
+
+.remove-checkbox{
+  margin-top: 15px;
+}

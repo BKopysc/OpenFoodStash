@@ -1,0 +1,10 @@
+<mat-grid-list cols="{{ (offersGridOptions | async)?.columns }}" rowHeight="160px">
+  <mat-grid-tile *ngFor="let offer of preparedOffers"
+                 [colspan]="(offersGridOptions | async)?.colspan"
+                 [rowspan]="(offersGridOptions | async)?.rowspan">
+    <div class="offer-div">
+      <mat-icon [fontIcon]="offer.icon" class="offer-icon"></mat-icon>
+      <span class="offer-span">{{offer.info | translate}}</span>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,138 @@
+<h1 [style]="{textAlign: 'center'}" mat-dialog-title>
+  {{ 'foodModals.editFood.title' | translate }}
+</h1>
+<div mat-dialog-content>
+  <ng-container *ngIf="!loadingAvailable; else available_loading_div">
+    <form [formGroup]="foodEditForm">
+      <mat-form-field appearance="fill" class="form-card-field-100">
+        <mat-label>{{ 'addFoodPage.form.storage.label' | translate }}</mat-label>
+        <mat-select disableOptionCentering formControlName="storageId">
+          <mat-select-trigger *ngIf="this.selectedStorage">
+            <span>{{selectedStorage.name}}</span>
+            <span class="storage-select-stashName">{{selectedStorage.stashName}}</span>
+          </mat-select-trigger>
+          <mat-option *ngFor="let storage of availableStorages" [value]="storage.id" (click)="onStorageSelection()">
+            <span>{{storage.name}}</span>
+            <span class="storage-select-stashName">{{storage.stashName}}</span>
+            <span class="storage-select-storageType">{{getStorageType(storage.storageType) | translate}}</span>
+          </mat-option>
+        </mat-select>
+        <mat-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-card-field-100">
+        <mat-label>{{ 'addFoodPage.form.name.label' | translate }}</mat-label>
+        <input formControlName="name" matInput placeholder="Milk">
+        <mat-error>
+          <p *ngIf="formErrorHandling.errorHandling('name','required')">
+            {{ 'basicFormErrors.required' | translate}}
+          </p>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-card-field-100">
+        <mat-label>{{ 'addFoodPage.form.category.label' | translate }}</mat-label>
+        <mat-select disableOptionCentering formControlName="categoryId">
+          <mat-option *ngFor="let category of availableCategories" [value]="category.id">
+            {{foodCategoryTrans.get(category.name)! | translate}}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <p *ngIf="formErrorHandling.errorHandling('categoryId','required')">
+            {{ 'basicFormErrors.required' | translate}}
+          </p>
+        </mat-error>
+      </mat-form-field>
+
+      <div class="unit-form-div">
+        <mat-form-field appearance="fill" class="unit-form-field">
+          <mat-label>{{ 'addFoodPage.form.initialValue.label' | translate }}</mat-label>
+          <input formControlName="initialUnitValue" matInput placeholder="120" (change)="onInitialValueChange()">
+          <mat-error>
+            <p *ngIf="formErrorHandling.errorHandling('initialUnitValue','required')">
+              {{ 'basicFormErrors.required' | translate}}
+            </p>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="unit-form-field">
+          <mat-label>{{ 'addFoodPage.form.unitType.label' | translate }}</mat-label>
+          <mat-select #singleSelect disableOptionCentering formControlName="unitType" placeholder="ml">
+            <mat-option>
+              <ngx-mat-select-search
+                [formControl]="unitTypeFilterCtrl"
+                [noEntriesFoundLabel]="'foodUnitType.noTypesLabel' | translate"
+                [placeholderLabel]="'foodUnitType.findLabel' | translate">
+              </ngx-mat-select-search>
+            </mat-option>
+            <mat-option *ngFor="let unitType of filteredUnitTypes | async" [value]="unitType.name">
+              {{unitType.trans}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            <p *ngIf="formErrorHandling.errorHandling('unitType','required')">
+              {{ 'basicFormErrors.required' | translate}}
+            </p>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <mat-form-field appearance="fill" class="form-card-field-100">
+        <mat-label>{{ 'addFoodPage.form.currentValue.label' | translate }}</mat-label>
+        <input formControlName="unitValue" matInput placeholder="120" (change)="onCurrentValueChange()">
+        <span matSuffix>
+            {{unitTypesTrans.get(foodEditForm.controls['unitType'].value)! | translate}}
+          </span>
+        <mat-error>
+          <p *ngIf="formErrorHandling.errorHandling('unitValue','required')">
+            {{ 'basicFormErrors.required' | translate}}
+          </p>
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill" class="form-card-field-100">
+        <mat-label>{{ 'addFoodPage.form.expirationDate.label' | translate }}</mat-label>
+        <input #date_ref (dateInput)="onExpirationDateChange()" [matDatepicker]="picker" [min]="minDate" formControlName="expirationDate"
+               matInput>
+        <mat-error>
+          <p *ngIf="formErrorHandling.errorHandling('expirationDate','required')">
+            {{ 'basicFormErrors.required' | translate}}
+          </p>
+        </mat-error>
+        <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div *ngIf="expirationDateFromPast" class="past-date-warning">
+        <mat-icon class="past-date-icon">warning</mat-icon>
+        <span>{{ 'addFoodPage.form.expirationDate.warning' | translate }}</span>
+      </div>
+
+      <div class="addons-section">
+        <mat-checkbox color="primary" formControlName="isOpen">
+          <span>{{ 'addFoodPage.form.openedCheckbox.label' | translate }}</span>
+        </mat-checkbox>
+      </div>
+
+    </form>
+  </ng-container>
+  <ng-template #available_loading_div>
+    <div class="init-spinner">
+      <mat-spinner diameter="25"></mat-spinner>
+    </div>
+  </ng-template>
+</div>
+
+<div class="footer-modal-div" mat-dialog-actions>
+  <button (click)="onEditClick()" [loading]="editActionLoading || loadingAvailable" class="button-with-left-icon"
+          color="primary" mat-flat-button>
+    <mat-icon fontIcon="done"></mat-icon>
+    <span>{{ 'foodModals.editFood.buttons.edit' | translate }}</span>
+  </button>
+  <button (click)="onNoClick()" [loading]="editActionLoading" mat-stroked-button>
+    {{ 'foodModals.editFood.buttons.cancel' | translate }}
+  </button>
+</div>

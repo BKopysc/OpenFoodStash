@@ -1,0 +1,44 @@
+<h1 class="form-card-title-centered" mat-dialog-title>{{data.title | translate}}</h1>
+<div mat-dialog-content >
+  <form [formGroup]="createStorageForm" autocomplete="off" *ngIf="!getLoading; else loading_div">
+    <mat-form-field appearance="fill" class="form-card-field-100">
+      <mat-label>{{'storageModifyModal.name.label' | translate}}</mat-label>
+      <input formControlName="name" matInput type="text">
+      <mat-error>
+         <span *ngIf="storageErrorHelper.errorHandling('name','required')">
+               {{ 'basicFormErrors.required' | translate}}
+            </span>
+        <span *ngIf="storageErrorHelper.errorHandling('name','minlength')">
+               {{ 'basicFormErrors.minLen' | translate: {minLen: storageErrorHelper.getLenValidator('name', 'minlength')} }}
+            </span>
+        <span *ngIf="storageErrorHelper.errorHandling('name','maxlength')">
+               {{ 'basicFormErrors.maxLen' | translate: {maxLen: storageErrorHelper.getLenValidator('name', 'maxlength')} }}
+        </span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form-card-field-100">
+      <mat-label>{{'storageModifyModal.storageType.label' | translate}}</mat-label>
+      <mat-select formControlName="storageType">
+        <mat-option *ngFor="let storageIt of storageTransArr" [value]="storageIt.name">
+          {{storageIt.value | translate}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <ng-template #loading_div >
+    <div class="auto-flex-row">
+      <mat-spinner [diameter]="25"></mat-spinner>
+    </div>
+  </ng-template>
+</div>
+
+<div mat-dialog-actions class="auto-flex-row">
+  <button (click)="onNoClick()" mat-stroked-button class="button-action" [loading]="postLoading">
+    {{'storageModifyModal.buttons.cancel' | translate}}
+  </button>
+  <button (click)="onSaveClick()" mat-flat-button color="primary"  class="button-action" [loading]="postLoading">
+    {{'storageModifyModal.buttons.save' | translate}}
+  </button>
+  <!--  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>-->
+</div>

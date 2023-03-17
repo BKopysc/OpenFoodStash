@@ -1,0 +1,24 @@
+@import "src/sass/variables";
+@import "@angular/material/theming";
+$base-color: mat-color($my-primary, 0.8);
+
+.offer-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.offer-icon{
+  color: $base-color;
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+.offer-span{
+  color:grey;
+  font-size: 14px;
+  text-align: center;
+}

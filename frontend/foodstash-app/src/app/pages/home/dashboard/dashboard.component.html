@@ -1,0 +1,49 @@
+<div class="simple-main-div">
+  <div>
+    <div class="welcome-title">
+      <span>{{'dashboard.title' | translate}}, </span>
+      <div class="loading-title-div animated-background" *ngIf="dashboardLoading === true; else title_loaded">
+      </div>
+      <ng-template #title_loaded>
+        <span *ngIf="dashboardLoading === false">
+          {{dashboardSimple.name}}
+        </span>
+      </ng-template>
+    </div>
+<!--    <ng-template #loading_title>-->
+<!--      <div class="loading-title-div animated-background"></div>-->
+<!--    </ng-template>-->
+
+  </div>
+
+  <div>
+    <mat-grid-list cols="{{ (dashboardGridOptions | async)?.columns }}" rowHeight="160px">
+      <mat-grid-tile *ngFor="let i of expectedDataNum"
+                     [colspan]="(dashboardGridOptions | async)?.colspan"
+                     [rowspan]="(dashboardGridOptions | async)?.rowspan">
+        <app-loading-overall-tile *ngIf="dashboardLoading === true; else loaded_tile"></app-loading-overall-tile>
+        <ng-template #loaded_tile>
+          <app-statistic-overall-tile [data]="dataPackages[i]">
+          </app-statistic-overall-tile>
+        </ng-template>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <div class="over-buttons-div">
+    <div class="buttons-div">
+      <button mat-flat-button class="button-with-left-icon"
+              [loading]="dashboardLoading" color="primary" [routerLink]="stashLink">
+        <mat-icon fontIcon="warehouse"></mat-icon>
+        <span>{{'dashboard.buttons.goToStash' | translate}}</span>
+      </button>
+      <button mat-stroked-button class="button-with-left-icon"
+              [loading]="dashboardLoading" color="primary" [routerLink]="addStash">
+        <mat-icon fontIcon="add"></mat-icon>
+        <span>{{'dashboard.buttons.addStash' | translate}}</span>
+
+      </button>
+    </div>
+  </div>
+
+</div>

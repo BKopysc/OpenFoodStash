@@ -1,0 +1,40 @@
+<h1 [style]="{textAlign: 'center'}" mat-dialog-title>
+  {{(this.throwOutMode ? 'foodModals.toTrashFood.titleTrash' : 'foodModals.toTrashFood.titleDelete') | translate}}
+</h1>
+<div class="dialog-content-div" mat-dialog-content>
+  <h3>{{'foodModals.toTrashFood.options' | translate}}: </h3>
+  <div class="checkboxes-div">
+    <mat-checkbox (change)="onThrowCheckChange()" [(ngModel)]="throwOutMode">
+      <div class="check-div">
+        <span>{{'foodModals.toTrashFood.throwOption.name' | translate}}</span>
+        <mat-icon [matTooltip]="'foodModals.toTrashFood.throwOption.tip' | translate" class="info-icon" fontIcon="info_outlined">
+        </mat-icon>
+      </div>
+    </mat-checkbox>
+    <mat-checkbox (change)="onDeleteCheckChange()" [(ngModel)]="deleteMode">
+      <div class="check-div">
+        <span>{{'foodModals.toTrashFood.deleteOption.name' | translate}}</span>
+        <mat-icon [matTooltip]="'foodModals.toTrashFood.deleteOption.tip' | translate" class="info-icon" fontIcon="info_outlined">
+        </mat-icon>
+      </div>
+
+    </mat-checkbox>
+  </div>
+</div>
+
+<div class="footer-div" mat-dialog-actions>
+  <button (click)="onThrowOutClick()" class="button-with-left-icon"
+          *ngIf="throwOutMode" [loading]="deleteLoading"
+          color="warn" mat-flat-button>
+    <mat-icon fontIcon="delete_outlined"></mat-icon>
+    <span>{{'foodModals.toTrashFood.buttons.trash' | translate}}</span>
+  </button>
+  <button (click)="onDeleteClick()" *ngIf="deleteMode" [loading]="deleteLoading"
+          color="warn" class="button-with-left-icon" mat-flat-button>
+    <mat-icon fontIcon="delete_forever_outlined"></mat-icon>
+    <span>{{'foodModals.toTrashFood.buttons.delete' | translate}}</span>
+  </button>
+  <button (click)="onNoClick()" [loading]="deleteLoading" mat-stroked-button>
+    {{'foodModals.toTrashFood.buttons.cancel' | translate}}
+  </button>
+</div>

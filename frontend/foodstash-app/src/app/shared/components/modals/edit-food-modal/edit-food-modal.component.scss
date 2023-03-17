@@ -1,0 +1,46 @@
+.init-spinner {
+  display: flex;
+  justify-content: center;
+}
+
+.unit-form-div{
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.unit-form-field{
+  min-width: 80px;
+}
+
+.storage-select-stashName {
+  color: gray;
+  margin-left: 10px;
+}
+
+.storage-select-id {
+  color: gray;
+  margin-right: 5px;
+}
+
+.storage-select-storageType {
+  color: cornflowerblue;
+  margin-left: 10px;
+
+}
+
+.past-date-warning{
+  gap: 5px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  background: rgba(255, 194, 83, 0.48);
+  padding: 5px 5px;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.past-date-icon{
+  color: #ff5e00;
+}
+

@@ -1,0 +1,29 @@
+<h1 [style]="{textAlign: 'center'}" mat-dialog-title>
+  {{'foodModals.recoverFood.title' | translate }}
+</h1>
+<div mat-dialog-content>
+  <h3 style="text-align: center">  {{'foodModals.recoverFood.info' | translate }}</h3>
+  <div class="detail-div">
+    <div class="detail-dialog-row">
+      <span class="label-dialog-tag">{{'foodModals.recoverFood.details.name' | translate }}</span>
+      <span class="detail-dialog-tag">{{food.name}}</span>
+    </div>
+    <div class="detail-dialog-row">
+      <span class="label-dialog-tag">{{'foodModals.recoverFood.details.movedDate' | translate }}</span>
+      <span class="detail-dialog-tag">{{food.processedDate | date: "dd.MM.yyyy"}}</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-div" mat-dialog-actions>
+  <button mat-flat-button color="warn" class="button-with-left-icon" [loading]="recoverActionLoading"
+          (click)="onRecoverClicked()">
+    <mat-icon fontIcon="done"></mat-icon>
+    <span>{{'foodModals.recoverFood.buttons.ok' | translate }}</span>
+  </button>
+  <button (click)="onCancelClicked()" mat-stroked-button
+          [loading]="recoverActionLoading">
+    <span>{{'foodModals.recoverFood.buttons.cancel' | translate }}</span>
+  </button>
+</div>

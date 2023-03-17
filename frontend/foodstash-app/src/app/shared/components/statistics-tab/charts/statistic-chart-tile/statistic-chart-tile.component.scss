@@ -1,0 +1,17 @@
+
+.chart-container canvas{
+  max-height: 300px !important;
+  //min-width: 200px !important;
+  //width: 100% !important;
+  //height: auto !important;
+  width: auto !important;
+}
+
+.chart-container{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

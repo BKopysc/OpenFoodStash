@@ -1,0 +1,103 @@
+<div [class]="(isHandset$ | async) ? 'main-fixed-div' : 'main-div'">
+  <h1>{{'stashManagement.mainLabel' | translate}}</h1>
+  <button mat-raised-button color="primary" class="add-stash-button button-with-left-icon" (click)="onAddNewStash()">
+    <mat-icon fontIcon="add"></mat-icon>
+    <span>{{'stashManagement.buttons.newStash' | translate}}</span>
+  </button>
+  <div class="stashes-cards">
+    <ng-container *ngIf="stashLoading">
+      <mat-spinner *ngIf="stashLoading" [diameter]="50"></mat-spinner>
+    </ng-container>
+    <ng-container *ngIf="!stashLoading">
+      <div *ngIf="isStashEmpty; else stash_ready">
+        <h3>{{'stashManagement.emptyStashLabel' | translate}}</h3>
+      </div>
+      <ng-template #stash_ready>
+        <mat-card *ngFor="let stash of userStashes" class="stash-card">
+          <mat-card-title class="stash-card-title">
+            <mat-icon class="alert-icon" *ngIf="stash.hasWarning">warning</mat-icon>
+            <a [routerLink]="" class="card-title">{{stash.name}}</a>
+          </mat-card-title>
+          <mat-card-subtitle>
+            <span *ngIf="stash.ownerUsername !== currentUser.username">{{stash.ownerUsername}}</span>
+            <div class="subtitle-div">
+              <ng-container *ngIf="stash.personal; else shared_span">
+                <mat-icon aria-hidden="false" aria-label="person icon" class="subtitle-icon"
+                          fontIcon="person"></mat-icon>
+                <span>{{'stashManagement.stashDetails.personal' | translate}}</span>
+              </ng-container>
+              <div class="item-count-div">
+                <mat-icon aria-hidden="false" aria-label="shelves icon" class="subtitle-icon"
+                          fontIcon="shelves"></mat-icon>
+              </div>
+              <div>
+                <span>{{stash.numberOfStorages}} </span>
+<!--                <span>{{'stashManagement.stashDetails.items' | translate}}</span>-->
+              </div>
+
+            </div>
+            <ng-template #shared_span>
+              <mat-icon aria-hidden="false" aria-label="person icon" class="subtitle-icon" fontIcon="people"></mat-icon>
+              <span (click)="onShareStashInfo(stash)" class="share-info-span">{{'stashManagement.stashDetails.shared' | translate}}</span>
+            </ng-template>
+          </mat-card-subtitle>
+          <mat-card-content [class]="!(isHandset$ | async) ? 'card-content' : ''">
+            <ng-container *ngIf="expandedStorages.has(stash.id)">
+              <div *ngFor="let storage of stash.storages" [ngClass]="{overCardFixed: (isHandset$ | async)}"
+                   class="over-card-div unselectable" mat-ripple (click)="onStorageClick(stash.id, storage.id)">
+                <div *ngIf="(isHandset$ | async)" class="storage-name-handset-div">{{storage.name}}</div>
+                <div [ngClass]="{cardContentFixed: (isHandset$ | async)}" class="card-content-div">
+                  <div *ngIf="!(isHandset$ | async)" class="storage-name-div">
+                    {{storage.name}}
+                  </div>
+                  <div class="icon-span-div large-div">
+<!--                    <mat-icon aria-hidden="false" aria-label="local icon" fontIcon="local_offer"></mat-icon>-->
+                    <span>{{getStorageType(storage.storageType) | translate}}</span>
+                  </div>
+
+                  <div class="icon-span-div short-div">
+                    <mat-icon [matBadge]="storage.activeFoodStats" aria-hidden="false" aria-label="inventory icon"
+                              fontIcon="inventory" matBadgeSize="medium"></mat-icon>
+                    <!--              <span>50 items</span>-->
+                  </div>
+
+                  <div class="icon-span-div short-div">
+                    <mat-icon [matBadge]="storage.alertsStats > 0 ? storage.alertsStats : null" aria-hidden="false" aria-label="warning icon" class="alert-icon"
+                              fontIcon="warning" matBadgeColor="warn" matBadgeSize="medium"></mat-icon>
+                  </div>
+                </div>
+              </div>
+
+              <div class="over-card-div card-content-div storage-add-center" mat-ripple (click)="onAddNewStorage(stash.id)">
+                <div class="storage-add-div unselectable">
+                  <mat-icon fontIcon="add"></mat-icon>
+                  <span>{{'stashManagement.buttons.newStorage' | translate}}</span>
+                </div>
+              </div>
+            </ng-container>
+
+          </mat-card-content>
+          <mat-card-actions align="start" class="card-action-div" [ngClass]="{cardActionFixed: (isHandset$ | async)}">
+            <button (click)="expandStorages(stash.id)" class="storage-button action-button" color="primary" mat-button>
+              <mat-icon [fontIcon]="expandedStorages.has(stash.id) ? 'expand_less' : 'expand_more'"></mat-icon>
+              <span>{{'stashManagement.buttons.storage' | translate}}</span>
+            </button>
+            <div>
+<!--              <button class="action-button button-with-left-icon" color="primary" mat-flat-button>-->
+<!--                <mat-icon fontIcon="open_in_new"></mat-icon>-->
+<!--                <span>{{'stashManagement.buttons.open' | translate}}</span>-->
+<!--              </button>-->
+              <button mat-stroked-button *ngIf="currentUser.username === stash.ownerUsername"
+                      class="button-with-left-icon" (click)="onStashShare(stash)">
+                <mat-icon fontIcon="share"></mat-icon>
+                <span>{{'stashManagement.buttons.share' | translate}}</span>
+              </button>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </ng-template>
+
+    </ng-container>
+
+  </div>
+</div>

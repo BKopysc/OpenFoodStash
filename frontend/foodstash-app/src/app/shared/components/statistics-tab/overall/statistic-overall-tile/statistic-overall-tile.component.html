@@ -1,0 +1,12 @@
+<mat-card *ngIf="data !== undefined" class="overall-card">
+  <mat-card-title>
+    <span class="label-span">
+      {{data.transLabel | translate}}
+    </span>
+  </mat-card-title>
+  <mat-card-content class="card-content">
+    <span class="value-span">{{data.value}}</span>
+  </mat-card-content>
+</mat-card>
+
+

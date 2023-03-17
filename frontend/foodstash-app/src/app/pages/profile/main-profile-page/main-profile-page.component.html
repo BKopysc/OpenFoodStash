@@ -1,0 +1,29 @@
+<div class="simple-main-div">
+  <div class=" auto-flex">
+    <mat-card class="form-mat-card">
+      <div class="email-div">
+        <span >{{'userInfo.profile.email' | translate}}:</span>
+        <div *ngIf="loadingUserInfo; else loaded_email" class="loading-email-div animated-background"></div>
+        <ng-template #loaded_email>
+          <span>{{currentUser.email}}</span>
+        </ng-template>
+      </div>
+      <div class="user-div">
+        <span>{{'userInfo.profile.user' | translate}}:</span>
+        <div *ngIf="loadingUserInfo; else loaded_user" class="loading-user-div animated-background"></div>
+        <ng-template #loaded_user>
+          <span>{{currentUser.name}} {{currentUser.surname}}</span>
+        </ng-template>
+      </div>
+      <div class="buttons-div">
+        <button mat-flat-button color="primary" [loading]="loadingUserInfo" class="button-with-left-icon"
+                [routerLink]="passwordChangeRoute">
+          <mat-icon>lock_reset</mat-icon>
+          <span>{{'userInfo.profile.buttons.changePass' | translate}}</span>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+
+</div>

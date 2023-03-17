@@ -1,0 +1,19 @@
+
+
+<div class="simple-main-div main-div">
+  <div *ngIf="activationId.length === 0; else activation_correct">
+    <app-message-card
+      [iconColor]="'warn'"
+      [iconName]="'cancel'"
+      [info]="'activationPage.error'">
+    </app-message-card>
+  </div>
+
+  <ng-template #activation_correct>
+    <h2>{{'activationPage.loading' | translate}}</h2>
+    <mat-spinner [diameter]="40" *ngIf="activationLoading"></mat-spinner>
+    <mat-icon fontIcon="check" *ngIf="!activationLoading && activationSuccess" color="primary"></mat-icon>
+    <mat-icon fontIcon="close" *ngIf="!activationLoading && !activationSuccess" color="warn"></mat-icon>
+  </ng-template>
+
+</div>

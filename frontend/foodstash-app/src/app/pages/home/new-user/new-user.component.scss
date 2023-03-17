@@ -1,0 +1,27 @@
+.title-div{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 50px;
+  align-items: center;
+}
+
+.title-span{
+  font-size: 50px;
+}
+
+.subtitle-span{
+  font-size: 14px;
+  color: grey;
+}
+
+.buttons-div{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  gap: 10px;
+}
+
+.bottom-div{
+  margin-bottom: 40px;
+}

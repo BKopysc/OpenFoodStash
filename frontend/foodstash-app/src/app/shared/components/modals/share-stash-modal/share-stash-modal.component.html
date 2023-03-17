@@ -1,0 +1,70 @@
+<h1 [style]="{textAlign: 'center'}" mat-dialog-title>
+  {{'stashModals.share.title' | translate}}
+</h1>
+<div mat-dialog-content class="custom-dialog-content">
+  <mat-tab-group (selectedIndexChange)="onTabChange($event)" animationDuration="0ms">
+    <mat-tab label="{{'stashModals.share.shareLabel' | translate}}">
+      <div class="tab-content">
+        <p>{{'stashModals.share.subtitle' | translate}}</p>
+        <form [formGroup]="shareForm" class="auto-flex">
+          <mat-form-field appearance="fill" class="form-card-field-100">
+            <mat-label>{{'email'}}</mat-label>
+            <input (change)="onInputChange()" formControlName="email" matInput type="email">
+            <mat-error>
+        <span *ngIf="errorFormHandling.errorHandling('email','required')">
+               {{ 'basicFormErrors.required' | translate}}
+        </span>
+              <span *ngIf="errorFormHandling.errorHandling('email','email')">
+               {{ 'basicFormErrors.notEmail' | translate}}
+        </span>
+              <span *ngIf="errorFormHandling.errorHandling('email','notMatch')">
+               {{ 'basicFormErrors.yourEmail' | translate}}
+        </span>
+            </mat-error>
+          </mat-form-field>
+        </form>
+        <div *ngIf="sendSuccess" class="send-card-success">
+          <mat-icon fontIcon="mail_outlined"></mat-icon>
+          <span>{{'stashModals.share.sendInfo' | translate}}</span>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="{{'stashModals.share.pendingLabel' | translate}}">
+      <div class="tab-content pending-content">
+        <mat-spinner diameter="25" *ngIf="pendingLoading"></mat-spinner>
+        <p *ngIf="pendingShareRequests.length === 0">{{'stashModals.share.emptyPending' | translate}}</p>
+        <div *ngFor="let pendingReq of pendingShareRequests, let i = index">
+          <div class="pending-header">
+            <span>{{'stashModals.share.pendingHeaders.email' | translate}}:</span>
+            <span class="right-header">
+              {{'stashModals.share.pendingHeaders.delete' | translate}}:</span>
+          </div>
+          <div class="pending-row">
+            <span>{{pendingReq.email}}</span>
+            <button mat-icon-button color="warn" (click)="onDeletePending(pendingReq)"
+                    [loading]="deletePendingLoadings.get(pendingReq.email) ?? false">
+              <mat-icon>unsubscribe_outlined</mat-icon>
+            </button>
+          </div>
+          <mat-divider *ngIf="i+1 !== pendingShareRequests.length"></mat-divider>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<div class="footer-modal-div" mat-dialog-actions>
+  <ng-container *ngIf="selectedTab === 0">
+    <button (click)="onShareClick()" [loading]="shareActionLoading"
+            class="button-with-left-icon"
+            color="primary" mat-flat-button>
+      <mat-icon fontIcon="send"></mat-icon>
+      <span>{{'stashModals.share.shareBtn' | translate}}</span>
+    </button>
+  </ng-container>
+  <button (click)="onNoClick()"
+          [loading]="shareActionLoading" mat-stroked-button>
+    {{'stashModals.share.cancelBtn' | translate}}
+  </button>
+
+</div>

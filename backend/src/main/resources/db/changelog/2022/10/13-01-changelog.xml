@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.16.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1665688486136-1" author="bkopy (generated)">
+        <createSequence incrementBy="1" sequenceName="hibernate_sequence" startValue="1"/>
+    </changeSet>
+    <changeSet id="1665688486136-2" author="bkopy (generated)">
+        <createTable tableName="food">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_food"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="unit_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="unit_value" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="added_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expiration_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_eaten" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_open" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_uneatable" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fresh_score" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="food_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1665688486136-3" author="bkopy (generated)">
+        <createTable tableName="food_category">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_foodcategory"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1665688486136-4" author="bkopy (generated)">
+        <createTable tableName="profiles">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_profiles"/>
+            </column>
+            <column name="name" type="VARCHAR(120)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="VARCHAR(120)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birth_date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gender" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1665688486136-5" author="bkopy (generated)">
+        <createTable tableName="roles">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_roles"/>
+            </column>
+            <column name="name" type="VARCHAR(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1665688486136-6" author="bkopy (generated)">
+        <createTable tableName="stash">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_stash"/>
+            </column>
+            <column name="owner_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(30)"/>
+            <column name="personal" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1665688486136-7" author="bkopy (generated)">
+        <createTable tableName="storage">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_storage"/>
+            </column>
+            <column name="stash_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="storage_type" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1665688486136-8" author="bkopy (generated)">
+        <createTable tableName="user_profile">
+            <column name="profile_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_profile"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1665688486136-9" author="bkopy (generated)">
+        <createTable tableName="user_roles">
+            <column name="role_id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_roles"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_roles"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1665688486136-10" author="bkopy (generated)">
+        <createTable tableName="user_stash">
+            <column name="stash_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_stash"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_stash"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1665688486136-11" author="bkopy (generated)">
+        <createTable tableName="users">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users"/>
+            </column>
+            <column name="username" type="VARCHAR(50)"/>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1665688486136-12" author="bkopy (generated)">
+        <addUniqueConstraint columnNames="username" constraintName="uc_77584fbe74cc86922be2a3560" tableName="users"/>
+    </changeSet>
+    <changeSet id="1665688486136-13" author="bkopy (generated)">
+        <addUniqueConstraint columnNames="password" constraintName="uc_b76709bae55b58f8daddf5489" tableName="users"/>
+    </changeSet>
+    <changeSet id="1665688486136-14" author="bkopy (generated)">
+        <addForeignKeyConstraint baseColumnNames="food_id" baseTableName="food" constraintName="FK_FOOD_ON_FOOD"
+                                 referencedColumnNames="id" referencedTableName="food_category"/>
+    </changeSet>
+    <changeSet id="1665688486136-15" author="bkopy (generated)">
+        <addForeignKeyConstraint baseColumnNames="stash_id" baseTableName="storage" constraintName="FK_STORAGE_ON_STASH"
+                                 referencedColumnNames="id" referencedTableName="stash"/>
+    </changeSet>
+    <changeSet id="1665688486136-16" author="bkopy (generated)">
+        <addForeignKeyConstraint baseColumnNames="profile_id" baseTableName="user_profile"
+                                 constraintName="fk_usepro_on_profile" referencedColumnNames="id"
+                                 referencedTableName="profiles"/>
+    </changeSet>
+    <changeSet id="1665688486136-17" author="bkopy (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_profile"
+                                 constraintName="fk_usepro_on_user" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1665688486136-18" author="bkopy (generated)">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="user_roles" constraintName="fk_userol_on_role"
+                                 referencedColumnNames="id" referencedTableName="roles"/>
+    </changeSet>
+    <changeSet id="1665688486136-19" author="bkopy (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_roles" constraintName="fk_userol_on_user"
+                                 referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1665688486136-20" author="bkopy (generated)">
+        <addForeignKeyConstraint baseColumnNames="stash_id" baseTableName="user_stash"
+                                 constraintName="fk_usesta_on_storage" referencedColumnNames="id"
+                                 referencedTableName="storage"/>
+    </changeSet>
+    <changeSet id="1665688486136-21" author="bkopy (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_stash" constraintName="fk_usesta_on_user"
+                                 referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+
+</databaseChangeLog>

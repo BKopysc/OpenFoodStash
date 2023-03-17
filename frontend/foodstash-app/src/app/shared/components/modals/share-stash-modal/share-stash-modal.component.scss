@@ -1,0 +1,44 @@
+.send-card-success{
+  color: green;
+  margin-top: 10px;
+  border: solid rgba(0, 143, 0, 0.64) 1px;
+  border-radius: 10px;
+  padding: 10px 10px;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab-content{
+  margin-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.pending-content{
+  display: flex;
+  flex-direction: column;
+}
+
+.pending-row{
+  display: flex;
+  align-items: center;
+}
+
+.pending-row button{
+  margin-left: auto;
+}
+
+.custom-dialog-content{
+  max-height: 400px;
+}
+
+.pending-header{
+  display: flex;
+  font-size: 12px;
+}
+
+.right-header{
+  margin-left: auto;
+}

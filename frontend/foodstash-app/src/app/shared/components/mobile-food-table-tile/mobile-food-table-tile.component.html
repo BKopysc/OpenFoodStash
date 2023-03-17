@@ -1,0 +1,29 @@
+
+<div class="tile-div" [ngClass]="isWarning ? 'warning-border' : ''">
+  <div class="name-row">
+    <mat-icon [fontIcon]="'warning'" *ngIf="isWarning" class="warning-icon"></mat-icon>
+    <span class="name-span">{{nameValue}}</span>
+  </div>
+  <div class="cat-value-row">
+    <div class="value-row">
+      {{value}} {{valueTypeTrans}}
+    </div>
+    <div class="category-row">
+      <span>{{categoryTrans}}</span>
+    </div>
+  </div>
+
+  <div class="date-row">
+    <div class="date-trans">
+      {{dateTrans}}:
+    </div >
+    <div class="date-value">
+      {{dateValue | date: 'dd.MM.yyyy'}}
+    </div>
+  </div>
+  <div class="actions-row">
+    <button mat-icon-button *ngFor="let btn of actionsButtons; let i = index" (click)="emitButtonClick(foodId, btn.enumAction)">
+      <mat-icon [fontIcon]="btn.icon" class="button-color" [ngClass]="buttonsColors[i]"></mat-icon>
+    </button>
+  </div>
+</div>

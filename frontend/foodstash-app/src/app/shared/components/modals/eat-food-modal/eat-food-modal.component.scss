@@ -1,0 +1,29 @@
+
+
+.quick-button{
+  width: auto;
+}
+
+.quick-calc-buttons{
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.input-field{
+  width: 100%;
+  margin-top: 20px;
+}
+
+.left-calculated{
+  color: royalblue;
+}
+
+
+.detail-dialog-div{
+  display: flex;
+  flex-direction: column;
+  gap:5px;
+  margin-bottom: 12px;
+}

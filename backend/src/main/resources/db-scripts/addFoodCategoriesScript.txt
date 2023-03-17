@@ -1,0 +1,24 @@
+insert into food_category (id, name)
+VALUES (1, 'DRINK'), (2, 'SAUCE'), (3,'MEAT')
+
+insert into food_category (id, name)
+VALUES (4, 'BREAD'), (5, 'DAIRY'), (6,'VEGETABLE')
+
+FOOD_TYPE = (
+        ('drink', 'Drink'),
+        ('sauce', 'Sauce'),
+        ('meat','Meat'),
+        ('bread', 'Bread'),
+        ('dairy', 'Dairy'),
+        ('vege','Vegetable'),
+        ('fruit', 'Fruit'),
+        ('dinner','Dinner'),
+        ('soup', 'Soup'),
+        ('canned', 'Canned Food'),
+        ('self', 'Self made'),
+        ('other', 'Other')
+    )
+
+
+insert into food(id, name, initial_unit_value, unit_value, added_date, expiration_date, is_eaten, is_open, is_uneatable, fresh_score, food_id, unit_type, storage_id, created_by, creation_date, last_modified_by, last_modified_date)
+VALUES (1, 'laciate',500, 400, '17-11-2022', '22-11-2022', true, true, false, 5, 1, 'ML', 58, 5, '15-11-2022', 5, '16-11-2022')

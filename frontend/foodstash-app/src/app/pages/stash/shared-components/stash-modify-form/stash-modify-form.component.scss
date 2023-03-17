@@ -1,0 +1,60 @@
+.storage-form-array{
+  //border: solid 2px rgba(0, 0, 0, 0.34);
+  //border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  //align-items: center;
+  //justify-content: center;
+}
+
+.add-storage-button{
+  width: fit-content;
+}
+
+
+.storage-label{
+  margin-bottom: 5px !important;
+  font-weight: 500 !important;
+  color: #3f3f3f;
+  width: fit-content;
+}
+
+.storage-label-error{
+  border-bottom: 3px solid #ff0000;
+  color:red;
+}
+
+.storage-name-field{
+  margin-right: 10px;
+  width: 40%;
+}
+
+mat-form-field .mat-form-field-flex{
+  background-color: aliceblue;
+}
+
+.storage-type-field{
+  width: 40%;
+}
+
+.delete-storage-button{
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  margin-left: 10px;
+}
+
+.save-button{
+  margin-top: 20px;
+  width: 100%;
+}
+
+.storage-form-fields{
+  display: flex;
+  flex-direction: row;
+}
+

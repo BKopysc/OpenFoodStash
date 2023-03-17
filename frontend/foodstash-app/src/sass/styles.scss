@@ -1,0 +1,183 @@
+@use '@angular/material' as mat;
+@use '@ng-matero/extensions' as mtx;
+@import "variables";
+@import "mixins";
+@import "form-styles";
+@import "browser";
+@import "animations";
+@import "dialog-styles";
+@import 'css-star-rating/scss/star-rating';
+@include mat.core();
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Theme styles */
+
+//$my-primary: mat.define-palette(mat.$indigo-palette, 500);
+//$my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$my-theme: mat.define-light-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+  )
+));
+
+@include mat.all-component-themes($my-theme);
+@include mtx.all-component-themes($my-theme);
+@include mtx.all-experimental-component-themes($my-theme);
+
+.errorForForm {
+  margin-bottom: 10px;
+  background-color: #ffdcdc;
+  border-radius: 10px 10px;
+  padding: 10px 10px;
+}
+
+.content-top-div {
+  padding-top: 50px;
+}
+
+.red-warning-button{
+  background-color: #ff3737 !important;
+  color: white !important;
+}
+
+.content-bottom-div{
+  padding-bottom: 50px;
+}
+
+.content-bottom-top{
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+
+.content-bottom-top-80{
+  padding-bottom: 50px;
+  padding-top: 80px;
+}
+
+
+.auto-flex{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.auto-flex-row{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.button-with-left-icon{
+  //button must be flexed, not still width
+  padding-left: 8px !important;
+}
+
+.button-with-left-icon mat-icon{
+  font-size: 20px;
+  margin-right: 4px;
+  height: fit-content;
+}
+
+.top-button-relative{
+  position: relative;
+}
+
+.form-mat-card{
+  max-width: 400px;
+  min-width: 270px;
+  padding: 20px 30px !important;
+  margin: 0px 20px;
+}
+
+.form-mat-card-mw500 {
+  width: 75%;
+  max-width: 500px;
+  min-width: 270px;
+  padding: 20px 30px !important;
+  margin: 0px 20px;
+}
+
+.form-card-title-centered{
+  margin-top: 5px !important;
+  width: 100%;
+  text-align: center;
+}
+
+.form-card-subtitle-centered{
+  width: 100%;
+  text-align: center;
+  margin-top: 15px !important;
+}
+
+.form-card-field-100{
+  width: 100%;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.simple-main-div{
+  margin: 20px 40px;
+}
+
+.simple-main-fixed-div{
+  margin: 20px 15px;
+}
+
+.mat-chip-with-icon{
+  display: flex;
+  gap: 5px;
+}
+
+
+.rating .label-value{
+  font-family: Roboto, "Helvetica Neue", sans-serif !important;
+  margin-top: 5px;
+  font-size: 15px !important;
+  color: gray !important;
+}
+
+.rating .star-container{
+  z-index: 1;
+}
+
+.footer-modal-div{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -800px 0
+  }
+  100% {
+    background-position: 800px 0
+  }
+}
+
+.animated-background {
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8 linear-gradient(to right, #eeeeee 8%, #bbbbbb 18%, #eeeeee 33%);
+  background-size: 800px 100px;
+  position: relative;
+}

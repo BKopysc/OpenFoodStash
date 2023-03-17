@@ -1,0 +1,18 @@
+
+mat-form-field .mat-form-field  {
+  animation: example;
+  animation-duration: 0.3s;
+  &-underline {
+    position: relative;
+    bottom: auto;
+  }
+  &-subscript-wrapper {
+    position: static;
+  }
+}
+
+@keyframes example {
+
+  //TODO: animation error fix
+  //https://lightrun.com/answers/angular-components-md-error-long-error-messages-overlap-input-fields
+}

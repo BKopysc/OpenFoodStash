@@ -1,0 +1,43 @@
+.email-div{
+  font-size: 22px;
+  display: flex;
+  height: fit-content;
+  gap: 10px;
+  margin-bottom: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow: auto;
+}
+
+.user-info-card{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.loading-email-div{
+  width: 120px;
+  height: 24px;
+}
+
+.user-div{
+  font-size: 18px;
+  height: fit-content;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow: auto;
+}
+
+.buttons-div{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.loading-user-div{
+  width: 180px;
+  height: 20px;
+}

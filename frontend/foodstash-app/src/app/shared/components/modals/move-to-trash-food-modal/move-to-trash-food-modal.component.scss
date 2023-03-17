@@ -1,0 +1,28 @@
+.checkboxes-div{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.dialog-content-div{
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.check-div{
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.footer-div{
+  display: flex;
+  justify-content: center;
+}
+
+.info-icon{
+  color: gray;
+}

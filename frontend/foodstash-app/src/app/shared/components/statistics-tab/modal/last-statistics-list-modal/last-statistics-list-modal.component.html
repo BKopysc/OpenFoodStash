@@ -1,0 +1,39 @@
+<h1 [style]="{textAlign: 'center'}" mat-dialog-title>
+  {{ 'lastStatisticsModal.title' | translate }}
+</h1>
+<div mat-dialog-content>
+  <ng-container *ngIf="listLoading; else list_loaded">
+    <mat-spinner [diameter]="25"></mat-spinner>
+  </ng-container>
+
+  <ng-template #list_loaded>
+    <p *ngIf="statsList.length == 0">{{ 'lastStatisticsModal.empty' | translate }}</p>
+    <div class="list-div" *ngIf="statsList.length > 0">
+      <mat-selection-list [(ngModel)]="selectedStatistic" multiple="false">
+        <mat-list-option *ngFor="let elem of statsList"
+                         [value]="elem.id">
+          <div class="option-wrapper">
+            <mat-icon [fontIcon]="selectedStatistic[0] == elem.id ? 'check' : ''" class="option-icon"></mat-icon>
+            <div class="labels-wrapper">
+              <div class="storage-name-div">
+                {{elem.storageName}}
+              </div>
+              <div class="dates-div">
+                {{elem.startDate | date: 'dd.MM.yyyy'}} - {{elem.endDate | date: 'dd.MM.yyyy'}}
+              </div>
+            </div>
+          </div>
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+  </ng-template>
+</div>
+
+<div class="footer-modal-div" mat-dialog-actions>
+  <button (click)="onLoadClick()" [loading]="listLoading" [disabled]="statsList.length == 0 ? true : false"
+          class="button-with-left-icon" color="primary" mat-flat-button>
+    <mat-icon fontIcon="system_update_alt_outlined"></mat-icon>
+    <span>{{ 'lastStatisticsModal.buttons.load' | translate }}</span>
+  </button>
+  <button (click)="onNoClick()" mat-stroked-button>{{ 'lastStatisticsModal.buttons.cancel' | translate }}</button>
+</div>

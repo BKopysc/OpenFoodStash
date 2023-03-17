@@ -1,0 +1,84 @@
+<div [class]="(isHandset$ | async) ? 'simple-main-fixed-div' : 'simple-main-div'">
+  <mat-card>
+    <div class="storage-title">
+      <button [routerLink]="backURL" mat-stroked-button>
+        <mat-icon fontIcon="arrow_back"></mat-icon>
+      </button>
+
+      <span *ngIf="!loadingStorage; else storage_loading" class="storage-title-span">
+          {{storageData.name}}
+      </span>
+
+      <ng-template #storage_loading>
+        <div>
+          <mat-spinner [diameter]="25"></mat-spinner>
+        </div>
+      </ng-template>
+    </div>
+
+    <ng-container *ngIf="!loadingStorage">
+      <div *ngIf="storageData.ownerUsername !== currentUser!.username" class="storage-username">
+        <mat-icon>person</mat-icon>
+        {{storageData.ownerUsername}}
+      </div>
+      <div [ngClass]="(isHandset$ | async) ? 'mat-chip-list-fixed' : ''" class="mat-chip-list-div">
+        <mat-chip-list>
+          <mat-chip class="mat-chip-with-icon" color="primary" selected>
+            <mat-icon fontIcon="home"></mat-icon>
+            <span>{{storageData.stashName}}</span>
+          </mat-chip>
+          <mat-chip class="mat-chip-with-icon" disableRipple>
+            <mat-icon fontIcon="local_offer"></mat-icon>
+            <span>{{getStorageType(storageData.storageType!) | translate}}</span>
+          </mat-chip>
+        </mat-chip-list>
+
+        <div [ngClass]="(isHandset$ | async) ? 'notify-icons-fixed' : ''" class="notify-icons">
+          <button mat-icon-button>
+            <mat-icon [matBadge]="storageData.activeFoodStats" aria-hidden="false" aria-label="inventory icon"
+                      class="items-notify-icon" fontIcon="inventory" matBadgeSize="medium"></mat-icon>
+          </button>
+
+          <button mat-icon-button>
+            <mat-icon [matBadge]="storageData.alertsStats" aria-hidden="false" aria-label="warning icon"
+                      class="alert-icon alerts-notify-icon" fontIcon="warning" matBadgeColor="warn"
+                      matBadgeSize="medium"></mat-icon>
+          </button>
+        </div>
+
+      </div>
+    </ng-container>
+
+  </mat-card>
+
+
+  <ng-container *ngIf="!loadingStorage">
+    <mat-tab-group (selectedIndexChange)="tabChange($event)" [preserveContent]="false"
+                   animationDuration="10ms" class="mat-tab-div">
+
+      <mat-tab [label]="'storagePage.tabTitles.table' | translate">
+        <ng-template matTabContent>
+          <app-food-table (tableContentChange)="refreshStorage($event)" [storageId]="storageId"></app-food-table>
+        </ng-template>
+      </mat-tab>
+
+      <mat-tab [label]="'storagePage.tabTitles.history' | translate">
+        <!--        <div *ngIf="showedTab.get(1)">-->
+        <!--        </div>-->
+        <ng-template matTabContent>
+          <app-food-history-table (tableContentChange)="refreshStorage($event)" [storageId]="storageId"></app-food-history-table>
+        </ng-template>
+      </mat-tab>
+
+      <mat-tab [label]="'storagePage.tabTitles.details' | translate">
+        <ng-template matTabContent>
+          <app-statistics-tab (onGenerateAlerts)="changeAlertsCounter($event)"
+                              [storageId]="storageId"></app-statistics-tab>
+        </ng-template>
+      </mat-tab>
+
+    </mat-tab-group>
+  </ng-container>
+
+
+</div>

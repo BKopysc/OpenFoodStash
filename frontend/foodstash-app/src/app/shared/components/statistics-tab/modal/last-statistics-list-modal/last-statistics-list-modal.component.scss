@@ -1,0 +1,23 @@
+.option-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.labels-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: flex-start;
+}
+
+.dates-div{
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.mat-list-option .mat-list-text{
+  padding-left: 0 !important;
+}

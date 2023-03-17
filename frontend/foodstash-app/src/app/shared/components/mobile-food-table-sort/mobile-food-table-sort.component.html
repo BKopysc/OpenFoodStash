@@ -1,0 +1,25 @@
+
+<div class="main-div">
+  <div class="select-div">
+    <span class="select-span">Sortuj po:</span>
+    <select class="custom-select"
+            [(ngModel)]="selectedValue" (change)="onSelectedChange()">
+      <option *ngFor="let h of sortingHeaders" [ngValue]="h.value">
+        {{h.transLabel | translate}}
+      </option>
+    </select>
+  </div>
+  <div class="select-div">
+    <span class="select-span">Kierunek:</span>
+    <select class="custom-select"
+            [(ngModel)]="sortingDirection" (change)="onSelectedChange()">
+      <option [ngValue]="'desc'">
+        {{'malejąco'}}
+      </option>
+      <option [ngValue]="'asc'">
+        {{'rosnąco'}}
+      </option>
+    </select>
+  </div>
+</div>
+

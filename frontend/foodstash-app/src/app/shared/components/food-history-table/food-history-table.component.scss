@@ -1,0 +1,198 @@
+@import "src/sass/variables";
+@import "@angular/material/theming";
+
+.add-food-button{
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 20%; // 100/5 collumns
+  padding-right: 5px;
+}
+
+.table-container-div{
+  position: relative;
+  background-color: white;
+}
+
+.no-data-cell{
+  text-align: center;
+  height: 150px;
+}
+
+.no-data-div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: gray;
+}
+
+.table-container{
+  position: relative;
+  min-height: 400px;
+  max-height: 600px;
+  overflow: auto;
+}
+
+.loading-table-spinner-div{
+  justify-content: center;
+  display: flex;
+  /* padding-top: 40px; */
+  height: 150px;
+  background: white;
+  align-items: center;
+}
+
+.status-row{
+  font-weight: 500;
+
+}
+
+.mat-chip-row{
+
+}
+
+.full-table-content-div{
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+
+$status-colors: (
+  FRESH: #42d1446e,
+  GOOD: #77dd77,
+  NOTFRESH: rgb(187, 136, 27),
+  SPOILED: rgba(232, 45, 36, 0.84),
+  TOTRY: #f87d24,
+);
+
+@each $colorname, $color in $status-colors {
+  .status-row--#{$colorname} {
+    //background: $color;
+    border-bottom: solid 2px $color;
+  }
+  .status-row-icon--#{$colorname}{
+    color: $color;
+  }
+  .status-row-date--#{$colorname}{
+    border-bottom: solid 2px $color;
+  }
+}
+
+.filters-div{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 10px
+}
+
+.category-filter-form{
+  flex: 1 1 0;
+  width: 45%;
+}
+
+.add-spinner-div{
+  margin-top: 10px;
+  height: 40px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.loading-indicator-div{
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-indicator-hidden{
+  visibility: hidden;
+}
+
+.loading-indicator-span{
+  margin-right: 15px;
+  font-style: italic;
+}
+
+.search-label-div{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.mat-header-cell {
+  //TODO table colors
+
+  //background-color: ;
+  //color:white;
+}
+
+.row-action-buttons{
+  display: flex;
+  gap: 5px;
+}
+
+.eat-row-button{
+  color: mat-color($my-primary);
+}
+
+.delete-row-button{
+  color: mat-color($my-warning);
+}
+
+.details-row-button{
+  color: gray;
+}
+
+.mat-sort-header-arrow{
+  color: white;
+}
+
+.status-row-div{
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.status-row-icon{
+  color: gray;
+}
+
+.filters-selects-fixed{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 10px;
+  margin-top:10px;
+}
+
+.filters-selects{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.filters-bar{
+  width: 100%;
+}
+
+.table-fixed td:not(:first-of-type){
+  padding-left: 40px !important;
+}
+
+.table-fixed th:not(:first-of-type){
+  padding-left: 40px !important;
+}

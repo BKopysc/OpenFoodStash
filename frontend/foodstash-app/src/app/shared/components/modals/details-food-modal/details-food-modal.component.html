@@ -1,0 +1,61 @@
+
+<h1 [style]="{textAlign: 'center'}" mat-dialog-title>
+  {{'foodModals.foodDetails.title' | translate }}
+</h1>
+<div mat-dialog-content>
+  <div class="div-row-warning" *ngIf="food.alerted">
+    <div class="warning-div">
+      <span class="warning-span">
+        {{'foodModals.foodDetails.warning.title' | translate }}
+      </span>
+      <mat-icon fontIcon="warning_outlined" color="warn"></mat-icon>
+    </div>
+    <span class="warning-span-info">
+      {{'foodModals.foodDetails.warning.alert' | translate }}
+    </span>
+  </div>
+  <div class="div-row">
+    <span class="row-label">{{'foodModals.foodDetails.name' | translate }}</span>
+    <span class="row-content">{{food.name}}</span>
+  </div>
+  <div class="div-row">
+    <span class="row-label">{{'foodModals.foodDetails.name' | translate }}</span>
+    <span class="row-content">{{foodCategoryTrans.get(food.foodCategoryDetailsDto.name)! | translate}}</span>
+  </div>
+  <div class="div-row">
+    <span class="row-label">{{'foodModals.foodDetails.initialAmount' | translate }}</span>
+    <span class="row-content">{{food.initialUnitValue}} {{unitTypeTrans.get(food.unitType)! | translate}}</span>
+  </div>
+  <div class="div-row">
+    <span class="row-label">{{'foodModals.foodDetails.currentAmount' | translate }}</span>
+    <span class="row-content">{{food.unitValue}} {{unitTypeTrans.get(food.unitType)! | translate}}</span>
+  </div>
+  <div class="div-row">
+    <span class="row-label">{{'foodModals.foodDetails.expirationDate' | translate }}</span>
+    <span class="row-content">{{food.expirationDate | date: "dd.MM.yyyy"}}</span>
+  </div>
+  <div class="div-row">
+    <span class="row-label">{{'foodModals.foodDetails.addedDate' | translate }}</span>
+    <span class="row-content">{{food.addedDate | date: "dd.MM.yyyy"}}</span>
+  </div>
+  <div class="div-row" *ngIf="food.processedDate != null">
+    <span class="row-label">{{'foodModals.foodDetails.processedDate' | translate }}</span>
+    <span class="row-content">{{food.processedDate | date: "dd.MM.yyyy"}}</span>
+  </div>
+<!--  <div class="div-row">-->
+<!--    <span class="row-label">{{'foodModals.foodDetails.foodStatus' | translate }}</span>-->
+<!--    <span class="row-content">{{food.status}}</span>-->
+<!--  </div>-->
+  <div class="div-row" *ngIf="food.freshScore != 0">
+    <span class="row-label">{{'foodModals.foodDetails.freshScore' | translate }}</span>
+    <span class="row-content">{{food.freshScore}}</span>
+  </div>
+</div>
+
+<div class="footer-div" mat-dialog-actions>
+  <button [mat-dialog-close]="true" mat-flat-button color="primary" class="button-with-left-icon">
+    <mat-icon fontIcon="done"></mat-icon>
+    <span>Ok</span>
+  </button>
+</div>
+

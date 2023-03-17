@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.16.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1665689068655-1" author="bkopy (generated)">
+        <dropColumn columnName="storage_type" tableName="storage"/>
+    </changeSet>
+    <changeSet id="1665689068655-2" author="bkopy (generated)">
+        <addColumn tableName="storage">
+            <column name="storage_type" type="VARCHAR(10)">
+                <constraints nullable="false" validateNullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1665689068655-3" author="bkopy (generated)">
+        <dropColumn columnName="unit_type" tableName="food"/>
+    </changeSet>
+    <changeSet id="1665689068655-4" author="bkopy (generated)">
+        <addColumn tableName="food">
+            <column name="unit_type" type="VARCHAR(10)">
+                <constraints nullable="false" validateNullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

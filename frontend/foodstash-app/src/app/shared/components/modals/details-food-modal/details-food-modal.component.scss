@@ -1,0 +1,46 @@
+.div-row{
+  display: flex;
+  width: 100%;
+}
+
+.div-row-warning{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  background-color: #ffe2e0;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.warning-div{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.warning-span{
+  font-weight: 500;
+}
+
+.warning-span-info{
+  font-weight: 300;
+}
+
+.row-label{
+  width: 140px;
+  text-align: start;
+  font-weight: 500;
+}
+
+.row-content{
+  text-align: start;
+}
+
+
+.footer-div{
+  display: flex;
+  justify-content: center;
+}

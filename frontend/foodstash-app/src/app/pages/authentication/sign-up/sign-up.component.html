@@ -1,0 +1,175 @@
+<div class="auto-flex content-bottom-top">
+<!--  <div class="banner-div">-->
+<!--    <span>Foodstash banner</span>-->
+<!--  </div>-->
+
+  <ng-container *ngIf="!registerSuccess; else on_register_success">
+    <mat-card class="form-card">
+      <mat-card-title class="form-card-title">
+        {{'auth.signupForm.mainTitle' | translate}}
+      </mat-card-title>
+      <mat-card-subtitle class="form-card-subtitle">
+        {{'auth.signupForm.subtitle' | translate}}
+      </mat-card-subtitle>
+      <mat-card-content>
+        <form [formGroup]="signUpForm" class="signup-form">
+          <mat-form-field appearance="fill" class="form-input">
+            <mat-label>{{'auth.signupForm.email.label' | translate}}</mat-label>
+            <input formControlName="email" matInput placeholder="sample@gmail.com">
+            <mat-error>
+            <span *ngIf="errorHandling('email','required')">
+              {{ 'basicFormErrors.required' | translate}}
+            </span>
+              <span *ngIf="errorHandling('email','email')">
+              {{ 'basicFormErrors.notEmail' | translate}}
+            </span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="form-input">
+            <mat-label>{{'auth.signupForm.name.label' | translate}}</mat-label>
+            <input formControlName="name" matInput placeholder="Jon">
+            <mat-error>
+            <span *ngIf="errorHandling('name','required')">
+               {{ 'basicFormErrors.required' | translate}}
+            </span>
+              <span *ngIf="errorHandling('name','minlength')">
+               {{ 'basicFormErrors.minLen' | translate: {minLen: getLenValidator('name', 'minlength')} }}
+            </span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="form-input">
+            <mat-label>{{'auth.signupForm.surname.label' | translate}}</mat-label>
+            <input formControlName="surname" matInput placeholder="Snow">
+            <mat-error>
+            <span *ngIf="errorHandling('surname','required')">
+               {{ 'basicFormErrors.required' | translate}}
+            </span>
+            </mat-error>
+          </mat-form-field>
+
+
+          <div class="form-info-div" matTooltip="{{ 'auth.signupForm.birthDate.tip' | translate }}"
+               matTooltipPosition="right">
+            <small class="form-info-span">{{ 'auth.signupForm.birthDate.tipLabel' | translate }}</small>
+            <mat-icon aria-hidden="false" aria-label="question icon" class="form-info-icon" fontIcon="help"></mat-icon>
+          </div>
+
+          <mat-form-field appearance="fill" class="form-input">
+            <mat-label>{{'auth.signupForm.birthDate.label' | translate}}</mat-label>
+            <input [matDatepicker]="picker" [max]="maxDate" [min]="minDate" formControlName="birthDate" matInput>
+            <mat-error>
+            <span *ngIf="errorHandling('birthDate','required')">
+               {{ 'basicFormErrors.required' | translate}}
+            </span>
+            </mat-error>
+            <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="form-input">
+            <mat-label>{{'auth.signupForm.gender.label' | translate}}</mat-label>
+            <mat-select formControlName="gender" name="gender">
+              <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                {{gender.name | translate}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+            <span *ngIf="errorHandling('gender','required')">
+               {{ 'basicFormErrors.required' | translate}}
+            </span>
+            </mat-error>
+          </mat-form-field>
+
+          <div class="card-divider"></div>
+
+          <div class="form-info-div" matTooltip="{{ 'auth.signupForm.password.tip' | translate }}"
+               matTooltipPosition="right">
+            <small class="form-info-span">{{ 'auth.signupForm.password.tipLabel' | translate }}</small>
+            <mat-icon aria-hidden="false" aria-label="question icon" class="form-info-icon" fontIcon="help"></mat-icon>
+          </div>
+
+          <mat-form-field appearance="fill" class="form-input">
+            <mat-label>{{'auth.signupForm.password.firstLabel' | translate}}</mat-label>
+            <input formControlName="password" matInput type="password">
+            <mat-error>
+            <span *ngIf="errorHandling('password','required')">
+               {{ 'basicFormErrors.required' | translate}}
+            </span>
+              <div *ngIf="errorHandling('password','passwordStrength')">
+                <span>{{ 'auth.signupForm.password.passwordIncorrect.line1' | translate }}</span>
+                <ul>
+                  <li>{{ 'auth.signupForm.password.passwordIncorrect.line2' | translate }}</li>
+                  <li>{{ 'auth.signupForm.password.passwordIncorrect.line3' | translate }}</li>
+                  <li>{{ 'auth.signupForm.password.passwordIncorrect.line4' | translate }}</li>
+                  <li>{{ 'auth.signupForm.password.passwordIncorrect.line5' | translate }}</li>
+                </ul>
+              </div>
+              <span *ngIf="errorHandling('password','minlength')
+            && !errorHandling('password', 'passwordStrength')">
+               {{ 'basicFormErrors.minLen' | translate: {minLen: getLenValidator('password', 'minlength')} }}
+            </span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="form-input">
+            <mat-label>{{'auth.signupForm.password.secondLabel' | translate}}</mat-label>
+            <input formControlName="retypePassword" matInput type="password">
+            <mat-error>
+              <p *ngIf="errorHandling('retypePassword','required')">
+                {{ 'basicFormErrors.required' | translate}}
+              </p>
+              <p *ngIf="errorHandling('retypePassword','matching')">
+                {{ 'auth.signupForm.password.passwordIncorrect.notMatch' | translate }}
+              </p>
+            </mat-error>
+          </mat-form-field>
+
+          <div class="checkbox-section">
+            <mat-checkbox color="primary" formControlName="rulesCheck">
+
+              <span>{{ 'auth.signupForm.rulesCheck.label' | translate }}</span>
+              <a href="#" target="_blank">{{ 'auth.signupForm.rulesCheck.ruleLink' | translate }}</a>
+            </mat-checkbox>
+            <mat-error>
+              <small *ngIf="errorHandling('rulesCheck', 'required')">
+                {{ 'basicFormErrors.required' | translate}}
+              </small>
+            </mat-error>
+          </div>
+
+          <div *ngIf="errorForForm.length > 0" class="errorForForm">
+            <mat-error>
+              {{errorForForm}}
+            </mat-error>
+          </div>
+
+          <button (click)="onFormSubmit()" [loading]="submitLoading" class="form-button" color="primary" mat-flat-button
+                  type="button">
+            {{ 'auth.signupForm.submitButton.label' | translate }}
+          </button>
+
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+
+  <ng-template #on_register_success>
+    <mat-card class="activation-full-div">
+        <div class="activation-div">
+          <span class="activation-span">{{'auth.signupForm.activationLink' | translate}}</span>
+          <mat-icon fontIcon="mail">
+          </mat-icon>
+        </div>
+        <div class="activation-button-div">
+          <p style="text-align: center">{{'auth.signupForm.emailNotSend' | translate}}</p>
+          <button mat-flat-button color="primary" class="button-with-left-icon" [loading]="resendRegisterVerificationLoading"
+                  (click)="resendVerification()">
+            <mat-icon fontIcon="send"></mat-icon>
+            <span>{{'auth.signupForm.resendLink' | translate}}</span>
+          </button>
+        </div>
+    </mat-card>
+  </ng-template>
+</div>

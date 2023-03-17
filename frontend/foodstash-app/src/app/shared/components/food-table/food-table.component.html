@@ -1,0 +1,255 @@
+<div class="full-table-content-div">
+  <div [ngClass]="(isHandset$ | async) ? 'add-spinner-div-fixed' : 'add-spinner-div'">
+    <div [ngClass]="(isHandset$ | async) ? 'add-delete-buttons-div-fixed' : 'add-delete-buttons-div'">
+      <button (click)="onAddFood()" class="add-food-button button-with-left-icon"
+              color="accent"
+              mat-flat-button
+      >
+        <mat-icon fontIcon="add"></mat-icon>
+        <span>{{'activeFoodTable.buttons.addFood' | translate}}</span>
+      </button>
+<!--      <button (click)="onThrowAllOutdatedClick()" class="add-food-button button-with-left-icon"-->
+<!--              color="primary"-->
+<!--              mat-stroked-button-->
+<!--      >-->
+<!--        <mat-icon fontIcon="delete_sweep_outlined"></mat-icon>-->
+<!--        <span>{{'activeFoodTable.buttons.throwOutdated' | translate}}</span>-->
+<!--      </button>-->
+    </div>
+    <div class="loading-indicator-div">
+      <button (click)="filterEventEmitter.emit()" mat-icon-button>
+        <mat-icon>refresh</mat-icon>
+      </button>
+      <span class="loading-indicator-span"><span>{{'activeFoodTable.filters.found' | translate}}: </span></span>
+      <ng-container *ngIf="loadingFilteringTable; else loaded_table_length ">
+        <mat-spinner [diameter]="25"></mat-spinner>
+      </ng-container>
+      <ng-template #loaded_table_length>
+        <span>{{pageAttr.totalElements}}</span>
+      </ng-template>
+    </div>
+  </div>
+
+
+
+  <div [ngClass]="(isHandset$ | async) ? 'filters-div-fixed' : 'filters-div'">
+    <div [ngClass]="(isHandset$ | async) ? 'filters-selects-fixed' : 'filters-selects'">
+      <mat-form-field appearance="fill" class="category-filter-form">
+        <mat-label>{{'activeFoodTable.filters.categories' | translate}}</mat-label>
+        <mat-select (selectionChange)="filterCategoriesChange()" [formControl]="filterCategoriesFormCtrl"
+                    disableOptionCentering
+                    multiple>
+          <!--        <mat-select-trigger *ngIf="allCategoriesSelectedOption.selected">-->
+          <!--            All-->
+          <!--        </mat-select-trigger>-->
+          <!--        <mat-option #allCategoriesSelectedOption (onSelectionChange)="toggleAllCategories()" [value]="-1">-->
+          <!--          All-->
+          <!--        </mat-option>-->
+          <mat-option (click)="onCategoryOptionClicked()" *ngFor="let category of filterCategoriesArr"
+                      [value]="category.id">
+            {{foodCategoriesTrans.get(category.name)! | translate}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="category-filter-form">
+        <mat-label>{{'activeFoodTable.filters.status' | translate}}</mat-label>
+        <mat-select [(ngModel)]="filterFoodStatusCtrl" disableOptionCentering>
+          <mat-option (click)="onFoodStatusOptionClicked()" *ngFor="let status of foodStatusFilter"
+                      [value]="status.name">
+            {{status.trans | translate}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div [ngClass]="(isHandset$ | async) ? 'filters-bar-fixed' : 'filters-bar'">
+      <mat-form-field appearance="fill">
+        <mat-label>
+          <div class="search-label-div">
+            <mat-icon>search</mat-icon>
+            <span>{{'activeFoodTable.filters.search' | translate}}</span>
+          </div>
+
+        </mat-label>
+        <mat-chip-list #filterChipList>
+          <mat-chip (removed)="removeKeywordChip(keyword)" *ngFor="let keyword of filterKeywords" [removable]="true">
+            {{keyword}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+          <input (matChipInputTokenEnd)="addChipFilter($event)"
+                 [matChipInputAddOnBlur]="true"
+                 [matChipInputFor]="filterChipList"
+                 [matChipInputSeparatorKeyCodes]="seperatorKeysCodes"
+                 [placeholder]="'activeFoodTable.filters.searchTip' | translate"
+          >
+        </mat-chip-list>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+
+
+  <ng-container   *ngIf="(isHandset$ | async) === false; else mobile_table_view">
+
+  <div class="mat-elevation-z8 table-container-div">
+
+    <div class="table-container">
+
+      <table [dataSource]="foodDetails" mat-table matSort [ngClass]="(isHandset$ | async) ? 'table-fixed' : ''">
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name" sticky>
+          <th *matHeaderCellDef mat-header-cell mat-sort-header="name">
+            {{'activeFoodTable.labels.name' | translate}}
+          </th>
+          <td *matCellDef="let row" mat-cell>
+            <div class="status-row-div">
+          <span [matTooltip]="row.status"
+                [ngClass]="row.status && iconsForStatus.get(row.status) ? ('status-row--' + row.status) : ''">
+                      {{row.name}}
+          </span>
+              <mat-icon *ngIf="iconsForStatus.has(row.status)"
+                        [fontIcon]="iconsForStatus.get(row.status)!"
+                        [ngClass]="('status-row-icon--' + row.status)"></mat-icon>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Category Column -->
+        <ng-container matColumnDef="category">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header="foodCategory">
+            {{'activeFoodTable.labels.category' | translate}}
+          </th>
+          <td *matCellDef="let row" mat-cell class="fixed-cell">
+            <mat-chip class="mat-chip-row unselectable">
+              {{foodCategoriesTrans.get(row.foodCategoryDetailsDto.name)! | translate}}
+            </mat-chip>
+          </td>
+        </ng-container>
+
+        <!-- Amount Column -->
+        <ng-container matColumnDef="amountLeft">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header="unitValue">
+            {{'activeFoodTable.labels.amount' | translate}}
+          </th>
+          <td *matCellDef="let row"
+              mat-cell> {{row.unitValue}} {{foodUnitTypeTrans.get(row.unitType)! | translate}} </td>
+        </ng-container>
+
+        <!-- Expiration Column -->
+        <ng-container matColumnDef="expirationDate">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header="expirationDate">
+            {{'activeFoodTable.labels.expiration' | translate}}
+          </th>
+          <td *matCellDef="let row" mat-cell>
+            <span [ngClass]="row.status && iconsForStatus.get(row.status) ? ('status-row-date--' + row.status) : ''">
+              {{row.expirationDate | date: 'dd.MM.yyyy'}}
+            </span>
+          </td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th *matHeaderCellDef mat-header-cell>
+            {{'activeFoodTable.labels.actions' | translate}}
+          </th>
+          <td *matCellDef="let row" mat-cell>
+            <div class="row-action-buttons">
+              <button (click)="onEatFoodClick(row)" class="eat-row-button" mat-icon-button>
+                <mat-icon fontIcon="restaurant_outline"
+                          matTooltip="{{'activeFoodTable.tips.eatFood' | translate}}"></mat-icon>
+              </button>
+              <button (click)="onMoveToTrashClick(row)" class="delete-row-button" mat-icon-button>
+                <mat-icon fontIcon="delete_outline"
+                          matTooltip="{{'activeFoodTable.tips.throwFood' | translate}}"></mat-icon>
+              </button>
+              <button (click)="onEditFoodClick(row)" class="details-row-button" mat-icon-button>
+                <mat-icon fontIcon="edit_outline"
+                          matTooltip="{{'activeFoodTable.tips.editFood' | translate}}"></mat-icon>
+              </button>
+              <button (click)="onDetailsClick(row)" class="details-row-button" mat-icon-button>
+                <mat-icon fontIcon="info_outline"
+                          matTooltip="{{'activeFoodTable.tips.detailsFood' | translate}}"></mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <!--        <ng-container matColumnDef="expand">-->
+        <!--          <th *matHeaderCellDef mat-header-cell></th>-->
+        <!--          <td *matCellDef="let row" mat-cell>-->
+        <!--            <button mat-icon-button>-->
+        <!--              <mat-icon fontIcon="expand_more"></mat-icon>-->
+        <!--            </button>-->
+        <!--          </td>-->
+        <!--        </ng-container>-->
+
+
+        <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <ng-container *ngIf="!loadingTable">
+          <tr *matNoDataRow class="mat-row">
+            <td class="mat-cell no-data-cell" colspan="5" rowspan="3">
+              <div class="no-data-div">
+                <span>{{'activeFoodTable.noData' | translate}}</span>
+                <mat-icon fontIcon="search_off"></mat-icon>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+
+      </table>
+
+      <div *ngIf="loadingTable" class="loading-table-spinner-div">
+        <mat-spinner diameter="50"></mat-spinner>
+      </div>
+
+    </div>
+
+    <mat-paginator [length]="pageAttr.totalElements"
+                   [pageSizeOptions]="[10, 25, 50, 100]"
+                   aria-label="Select page of users"
+
+    ></mat-paginator>
+  </div>
+
+  </ng-container>
+
+  <ng-template #mobile_table_view>
+
+    <app-mobile-food-table-sort [sortingHeaders]="mobileSortHeaders" (sortingEmitter)="handleMobileSorter($event)">
+
+    </app-mobile-food-table-sort>
+
+    <div class="mobile-tiles-div">
+      <app-mobile-food-table-tile *ngFor="let food of foodDetails"
+                                  [value]="food.unitValue"
+                                  [nameValue]="food.name"
+                                  [categoryTrans]="foodCategoriesTrans.get(food.foodCategoryDetailsDto.name)! | translate"
+                                  [valueTypeTrans]="foodUnitTypeTrans.get(food.unitType)! | translate"
+                                  [dateValue]="food.expirationDate"
+                                  [dateTrans]="'activeFoodTable.labels.expiration' | translate"
+                                  [isWarning]="food.alerted"
+                                  [foodId]="food.id"
+                                  [actionsButtons]="mobileButtons"
+                                  (emitButtonAction)="handleMobileButtons($event)"
+      >
+      </app-mobile-food-table-tile>
+    </div>
+
+
+    <mat-paginator [length]="pageAttr.totalElements"
+                   [pageSizeOptions]="[10, 25, 50, 100]"
+                   aria-label="Select page of users"
+
+    ></mat-paginator>
+  </ng-template>
+
+</div>
+
+
+

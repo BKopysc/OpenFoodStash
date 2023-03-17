@@ -1,0 +1,12 @@
+
+<mat-card>
+  <div class="message-row">
+    <span class="message-text">
+      {{info | translate}}
+    </span>
+    <ng-container *ngIf="iconName !== undefined && iconColor !== undefined">
+      <mat-icon [fontIcon]="iconName" [color]="iconColor">
+      </mat-icon>
+    </ng-container>
+  </div>
+</mat-card>

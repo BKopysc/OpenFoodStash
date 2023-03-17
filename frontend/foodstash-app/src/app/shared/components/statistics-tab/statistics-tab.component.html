@@ -1,0 +1,170 @@
+<div class="stats-div">
+  <h2>{{ 'statisticTab.overallSection.title' | translate }}</h2>
+  <div class="overall-div">
+    <mat-spinner [diameter]="25" *ngIf="loadingOverall; else loaded_overall"></mat-spinner>
+    <ng-template #loaded_overall>
+      <ng-container *ngIf="preparedDataForOverall.length > 0; else info_null">
+        <mat-grid-list cols="{{ (overallGridOptions | async)?.columns }}" rowHeight="150px">
+          <mat-grid-tile  *ngFor="let info of preparedDataForOverall"
+                          [colspan]="(overallGridOptions | async)?.colspan"
+                          [rowspan]="(overallGridOptions | async)?.rowspan">
+            <app-statistic-overall-tile [data]="info"></app-statistic-overall-tile>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </ng-container>
+      <ng-template #info_null>
+        <p>{{ 'statisticTab.warnings.emptyData' | translate }}</p>
+      </ng-template>
+    </ng-template>
+  </div>
+
+  <mat-divider class="tab-divider">
+  </mat-divider>
+
+  <h2>
+    <span [matTooltip]="'if you need to force checking alerts for your storage'">
+      {{'statisticTab.forceCheck.title' | translate}}
+    </span>
+    <mat-icon fontIcon="question_mark" style="font-size: 12px"> </mat-icon>
+  </h2>
+  <div>
+    <button class="button-with-left-icon" mat-flat-button
+            (click)="onForceCheckAlerts()"
+            [loading]="loadingForceCheck" color="primary">
+      <mat-icon fontIcon="notification_important_outlined"></mat-icon>
+      <span>{{'statisticTab.forceCheck.btn' | translate}}</span>
+    </button>
+  </div>
+
+  <mat-divider class="tab-divider">
+  </mat-divider>
+
+  <h2>{{ 'statisticTab.statisticSection.title' | translate }}</h2>
+  <div class="time-period-div">
+    <label>{{ 'statisticTab.statisticSection.dateInput.label' | translate }}:</label>
+    <mat-radio-group [(ngModel)]="selectedDateRange" class="dates-radio-group">
+      <mat-radio-button *ngFor="let dateModel of radioDates" [value]="dateModel">
+        {{dateModel.trans | translate}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <ng-container *ngIf="selectedDateRange?.name === 'custom'" class="datepicker-div">
+      <mat-form-field appearance="fill" class="datepicker-form">
+        <mat-label>{{ 'statisticTab.statisticSection.dateInput.inputLabel' | translate }}</mat-label>
+        <mat-date-range-input [formGroup]="rangeDateForm" [max]="maxDate" [min]="minDate" [rangePicker]="picker">
+          <input formControlName="start" matStartDate placeholder="Start date">
+          <input formControlName="end" matEndDate placeholder="End date">
+          <!--          <input #date_ref [matDatepicker]="picker" [min]="minDate" [max]="maxDate"-->
+          <!--                 [ngModel]="" matInput>-->
+        </mat-date-range-input>
+        <mat-hint>{{ 'statisticTab.statisticSection.dateInput.hint' | translate }}</mat-hint>
+        <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+        <mat-error>
+          <p *ngIf="formErrorHandling.errorHandling('start','required')
+          || formErrorHandling.errorHandling('end','required')">
+            {{ 'basicFormErrors.required' | translate}}
+          </p>
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+  </div>
+  <div class="generate-buttons-div">
+    <button (click)="onGenerateStatistics()" [loading]="loadingGenerating" color="primary" mat-flat-button>
+      {{ 'statisticTab.statisticSection.buttons.generate' | translate }}
+    </button>
+    <button (click)="onShowLastStatsList()" [loading]="loadingGenerating" color="accent" mat-flat-button>
+      {{ 'statisticTab.statisticSection.buttons.last' | translate }}
+    </button>
+  </div>
+
+
+  <div class="charts-panel" *ngIf="triedToGenerate" id="main-charts-panel">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <div *ngIf="storageStatisticModel.generatedData != null; else empty_data_title">
+            <span>{{ 'statisticGeneratedContent.title' | translate }}: {{storageStatisticModel.generatedData.name}}</span>
+          </div>
+          <ng-template #empty_data_title>
+            <span>
+             {{ 'statisticTab.warnings.emptyData' | translate }}
+            </span>
+          </ng-template>
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{storageStatisticModel.startDate | date: "dd.MM.yyyy"}}
+          - {{storageStatisticModel.endDate | date: 'dd.MM.yyyy'}}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <ng-container *ngIf="storageStatisticModel.generatedData !== null; else empty_data_content">
+          <section>
+            <mat-button-toggle-group [(ngModel)]="chartType" aria-label="Chart Type" (change)="chartToggleChange()">
+              <mat-button-toggle value="pie">
+                <mat-icon fontIcon="pie_chart"></mat-icon>
+              </mat-button-toggle>
+              <mat-button-toggle value="bar">
+                <mat-icon fontIcon="bar_chart"></mat-icon>
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </section>
+          <mat-grid-list cols="{{ (chartGridOptions | async)?.columns }}" rowHeight="350px">
+            <mat-grid-tile [colspan]="(chartGridOptions | async)?.colspan" [rowspan]="(chartGridOptions | async)?.rowspan">
+              <app-statistic-chart-tile [chartTitle]="preparedDataForNumChart!.title | translate" [chartType]="chartType"
+                                        [dataForNumChart]="preparedDataForNumChart!"
+                                        [isHandset]="(chartGridOptions | async)!.handset">
+              </app-statistic-chart-tile>
+            </mat-grid-tile>
+            <mat-grid-tile *ngFor="let dataForChart of preparedDataForCatChart"
+                           [colspan]="(chartGridOptions | async)?.colspan" [rowspan]="(chartGridOptions | async)?.rowspan">
+              <app-statistic-chart-tile [chartTitle]="dataForChart.actionType | translate" [chartType]="chartType"
+                                        [dataForCatChart]="dataForChart"
+                                        [isHandset]="(chartGridOptions | async)!.handset">
+
+              </app-statistic-chart-tile>
+            </mat-grid-tile>
+          </mat-grid-list>
+          <div class="summary-div">
+            <div class="summary-title">
+              <mat-icon fontIcon="lightbulb_outlined"></mat-icon>
+              <span>{{ 'statisticGeneratedContent.summary.title' | translate }}</span>
+            </div>
+            <div class="summary-content">
+              <div *ngIf="summaryNumContent != null" class="summary-content-wrapper">
+                <span class="summary-line">{{this.summaryNumContent.transTitle | translate}}:</span>
+                <div class="summary-li-wrapper">
+                  <div *ngFor="let val of this.summaryNumContent!.data" class="summary-li">
+                    <span class="summary-li-label">{{val.transLabel | translate}}</span>
+                    <span class="summary-li-value">{{val.value}}</span>
+                  </div>
+                </div>
+              </div>
+              <ng-container *ngFor="let valData of summaryCatContent">
+                <div *ngIf="valData != null" class="summary-content-wrapper">
+                  <span class="summary-line">{{valData.transTitle | translate}}:</span>
+                  <div class="summary-li-wrapper">
+                    <div *ngFor="let val of valData.data" class="summary-li">
+                      <span class="summary-li-label">{{val.transLabel | translate}}</span>
+                      <span class="summary-li-value">{{val.value}}</span>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+              <mat-divider></mat-divider>
+              <div class="summary-tip">
+                <div class="summary-tip-header">
+                  <span>{{summaryTipObj.emoji}}</span>
+                  <span>{{summaryTipObj.transTitle | translate}}</span>
+                </div>
+                <span class="summary-tip-info">{{summaryTipObj.transInfo | translate}}</span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #empty_data_content>
+          <p>{{ 'statisticGeneratedContent.emptyData' | translate }}</p>
+        </ng-template>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

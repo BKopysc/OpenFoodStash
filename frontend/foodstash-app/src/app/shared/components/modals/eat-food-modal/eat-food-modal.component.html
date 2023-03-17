@@ -1,0 +1,58 @@
+<h1 [style]="{textAlign: 'center'}" mat-dialog-title>
+  {{'foodModals.eatFood.title' | translate}}
+</h1>
+<div mat-dialog-content>
+  <h2 [style]="{textAlign: 'center'}">{{food.name}}</h2>
+  <div class="detail-dialog-div">
+    <div class="detail-dialog-row">
+      <span class="label-dialog-tag">{{'foodModals.eatFood.currentAmount' | translate}}:</span>
+      <span class="detail-dialog-tag">{{food.unitValue}} {{foodUnitTypeTrans.get(food.unitType)! | translate}}</span>
+    </div>
+    <div class="detail-dialog-row">
+    <span class="label-dialog-tag">
+      {{(setRemainingMode ? 'foodModals.eatFood.consumeAmount' : 'foodModals.eatFood.leftAmount') | translate}}:
+    </span>
+      <span class="detail-dialog-tag left-calculated">{{leftCalculated}} {{foodUnitTypeTrans.get(food.unitType)! | translate}}</span>
+    </div>
+  </div>
+  <div>
+    <mat-checkbox [(ngModel)]="setRemainingMode" color="primary">
+      <span>{{'foodModals.eatFood.setRemaining' | translate}}</span>
+    </mat-checkbox>
+  </div>
+  <mat-form-field [formGroup]="eatForm" appearance="fill" class="input-field">
+    <mat-label>
+      {{(setRemainingMode ? 'foodModals.eatFood.remainingAmountInput' : 'foodModals.eatFood.consumeAmountInput') | translate}}
+    </mat-label>
+    <input (change)="onInputChange()" formControlName="eatAmount" matInput step="1" type="number">
+    <mat-error>
+      <p *ngIf="formErrorHandling.errorHandling('eatAmount','required')">
+        {{ 'basicFormErrors.required' | translate}}
+      </p>
+      <mat-error>
+        <p *ngIf="formErrorHandling.errorHandling('eatAmount','pattern')">
+          {{ 'basicFormErrors.required' | translate}}
+        </p>
+      </mat-error>
+    </mat-error>
+  </mat-form-field>
+  <div class="quick-calc-buttons">
+    <button (click)="quickCalcBtn('all')" *ngIf="!setRemainingMode"
+            class="quick-button" mat-stroked-button>{{'foodModals.eatFood.buttons.all' | translate}}</button>
+    <button (click)="quickCalcBtn('zero')" *ngIf="setRemainingMode"
+            class="quick-button" mat-stroked-button>0
+    </button>
+    <button (click)="quickCalcBtn('half')" class="quick-button" mat-stroked-button>1/2</button>
+    <button (click)="quickCalcBtn('quarter')" class="quick-button" mat-stroked-button>1/4</button>
+  </div>
+</div>
+
+<div class="footer-modal-div" mat-dialog-actions>
+  <button (click)="onEatClick()" [loading]="eatActionLoading" class="button-with-left-icon"
+          color="primary" mat-flat-button>
+    <mat-icon fontIcon="done"></mat-icon>
+    <span>{{'foodModals.eatFood.buttons.consume' | translate}}</span>
+  </button>
+  <button (click)="onNoClick()" [loading]="eatActionLoading"
+          mat-stroked-button>{{'foodModals.eatFood.buttons.cancel' | translate}}</button>
+</div>

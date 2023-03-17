@@ -1,0 +1,17 @@
+<div class="simple-main-div main-div">
+  <div *ngIf="inviteToken.length === 0; else accept_error">
+    <app-message-card
+      [iconColor]="'warn'"
+      [iconName]="'cancel'"
+      [info]="'stashShareAccept.error'">
+    </app-message-card>
+  </div>
+
+  <ng-template #accept_error>
+    <h2>{{'stashShareAccept.loading' | translate}}</h2>
+    <mat-spinner [diameter]="40" *ngIf="acceptLoading"></mat-spinner>
+    <mat-icon fontIcon="check" *ngIf="!acceptLoading && acceptSuccess" color="primary"></mat-icon>
+    <mat-icon fontIcon="close" *ngIf="!acceptLoading && !acceptSuccess" color="warn"></mat-icon>
+  </ng-template>
+
+</div>

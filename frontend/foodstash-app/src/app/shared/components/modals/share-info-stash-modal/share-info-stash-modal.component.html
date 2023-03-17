@@ -1,0 +1,32 @@
+<h1 [style]="{textAlign: 'center'}" mat-dialog-title>
+  {{'stashModals.collaboration.title' | translate}}
+</h1>
+<div class="main-dialog" mat-dialog-content>
+  <p>{{'stashModals.collaboration.subtitle' | translate}}:</p>
+  <mat-spinner *ngIf="collaboratorsLoading" diameter="30"></mat-spinner>
+  <div class="collaborator-div">
+    <div *ngFor="let collaborator of currentCollaborators; let i = index">
+      <div class="collaborator-row">
+        <div class="collaborator-name-div">
+          <span>{{collaborator.email}}</span>
+          <span class="collaborator-type">
+        {{(collaborator.owner == true ? 'stashModals.collaboration.owner' : 'stashModals.collaboration.guest') | translate}}
+      </span>
+        </div>
+        <ng-container *ngIf="usersRemovingMode && collaborator.owner == false">
+          <button class="action-button" mat-icon-button>
+            <mat-icon color="warn">close</mat-icon>
+          </button>
+        </ng-container>
+      </div>
+      <mat-divider *ngIf="i+1 !== currentCollaborators.length" class="user-divider"></mat-divider>
+    </div>
+  </div>
+  <mat-checkbox [(ngModel)]="usersRemovingMode" class="remove-checkbox" *ngIf="isUserAnOwner">
+    {{'stashModals.collaboration.removing' | translate}}
+  </mat-checkbox>
+</div>
+
+<div class="footer-modal-div" mat-dialog-actions>
+  <button (click)="onNoClick()" mat-stroked-button>{{'stashModals.collaboration.back' | translate}}</button>
+</div>
