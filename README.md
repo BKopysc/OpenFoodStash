@@ -1,37 +1,16 @@
 `Spring Boot` + `Angular` + `PostgreSQL`
 
-Content/Zawartość:
 - [English version](#english-version)
-  - [OpenFoodStash](#openfoodstash---open-internet-application-for-the-management-of-food-supplies-for-household)
-    * [Capabilities](#capabilities)
-    * [Development possibilities](#development-possibilities)
-    * [Requirements and commissioning](#requirements-and-commissioning)
-      + [Required components](#required-components)
-      + [Configuration files](#configuration-files)
-        - [Backend](#backend)
-        - [Frontend](#frontend)
-      + [Backend Startup](#backend-startup)
-        - [Java Maven](#java-maven)
-        - [Docker](#docker)
-        - [API URL](#api-url)
-      + [Launching the Frontend](#launching-the-frontend)
-        - [URL](#url)
-    * [Notes](#notes)
+  - [OpenFoodStash - description](#openfoodstash---open-internet-application-for-the-management-of-food-supplies-for-household)
+  * [Capabilities](#capabilities)
+  * [Development possibilities](#development-possibilities)
+  * [Requirements and commissioning](#requirements-and-commissioning)
+  * [Notes](#notes)
 - [Polish version](#polska-wersja)
-  - [OpenFoodStash](#openfoodstash---otwarta-aplikacja-internetowa-do-zarządzania-zapasami-żywności-dla-gospodarstwa-domowego)
-  * [Możliwości](#możliwości)
+  - [OpenFoodStash - opis](#openfoodstash---otwarta-aplikacja-internetowa-do-zarządzania-zapasami-żywności-dla-gospodarstwa-domowego)
+  * [Oferowane możliwości](#oferowane-możliwości)
   * [Możliwości rozwoju](#możliwości-rozwoju)
   * [Wymagania i uruchomienie](#wymagania-i-uruchomienie)
-    + [Wymagane elementy](#wymagane-elementy)
-    + [Konfiguracyjne pliki](#konfiguracyjne-pliki)
-      - [Backend](#backend-1)
-      - [Frontend](#frontend-1)
-    + [Uruchomienie Backend](#uruchomienie-backend)
-      - [Java Maven (2 możliwości)](#java-maven-1)
-      - [Docker (2 możliwości)](#docker-1)
-      - [API URL](#api-url-1)
-    + [Uruchomienie Frontend](#uruchomienie-frontend)
-      - [URL](#url-1)
   * [Aktualności](#aktualności)
 - [Screenshots](#screenshots)
 
@@ -162,7 +141,7 @@ http://localhost:4200/
 
 Aplikacja stara się rozwiązać problem efektywnego zarządzania posiadaną żywnością oraz zniwelować zjawisko marnowania żywności. Pierwowzór powstał jako projekt inżynierski: FoodStash.
 
-## Możliwości
+## Oferowane Możliwości
 
 - Tworzenie osobistego konta
 - Tworzenie Schowków i Składzików: wirtualnych przestrzeni do przechowywania i zarządzania żywnością
