@@ -6,7 +6,7 @@
   * [Development possibilities](#development-possibilities)
   * [Requirements and commissioning](#requirements-and-commissioning)
   * [Notes](#notes)
-- [Polish version](#polska-wersja)
+- [Polska wersja](#polska-wersja)
   - [OpenFoodStash - opis](#openfoodstash---otwarta-aplikacja-internetowa-do-zarządzania-zapasami-żywności-dla-gospodarstwa-domowego)
   * [Oferowane możliwości](#oferowane-możliwości)
   * [Możliwości rozwoju](#możliwości-rozwoju)
@@ -32,6 +32,7 @@ The application was made to solve the problem of efficient management of the foo
 - Ability to share space between users
 - History of food consumed/added/thrown away
 - Generation of statistics and analysis of user behavior
+- Multilingualism (english and polish language)
 
 ## Development possibilities
 
@@ -151,6 +152,7 @@ Aplikacja stara się rozwiązać problem efektywnego zarządzania posiadaną ży
 - Możliwość współdzielenia przestrzeni pomiędzy użytkownikami
 - Historia spożytej/dodanej/wyrzuconej żywności
 - Generowanie statystyk i analiza zachowań użytkownika
+- Wielojęzyczność (wspierany język angielski i polski)
 
 ## Możliwości rozwoju
 
@@ -268,12 +270,11 @@ http://localhost:4200/
 
 - Signup Panel / Panel Rejestracji
 
-![rejestracja](https://user-images.githubusercontent.com/57834846/226748278-2f78080f-9777-4f93-8898-1488296a16ec.png)
+![rejestracja_znaczniki](https://user-images.githubusercontent.com/57834846/226750641-496715fe-ec55-40e3-8f9c-3112793f35fe.png)
 
 - Password Reset / Resetowanie Hasła
 
-![reset_password_request](https://user-images.githubusercontent.com/57834846/226748505-a6d78200-abaf-4e19-a6c1-ce857b294baf.png)
-![reset_link_send](https://user-images.githubusercontent.com/57834846/226748537-e0034fb0-68e9-4701-ad60-bfd401cbf073.png)
+![password_reset](https://user-images.githubusercontent.com/57834846/226750510-e7b4e490-1dcc-494c-9c63-0f8a45e4409c.png)
 
  - Dashboard 
  
@@ -283,15 +284,17 @@ http://localhost:4200/
 
 ![schowek_skrykti_dod](https://user-images.githubusercontent.com/57834846/226748954-ad34d354-e96f-44f0-bec7-b212d7ae5709.png)
 
+- Stash Share / Udostępnianie Schowka
+
+![schowek_share](https://user-images.githubusercontent.com/57834846/226751175-f616cb29-6c10-44e0-9fcd-0516b938e79d.png)
+
 - Selected Storage / Wybrany Składzik 
 
 ![skladzik_aktualne](https://user-images.githubusercontent.com/57834846/226749118-73d7479e-e0a6-4af0-bfb9-eabf0b5673fb.png)
 
 - Statistics / Statystyki
 
-![Statystyki_1](https://user-images.githubusercontent.com/57834846/226749448-118c3e13-94fd-4310-ae7b-6fa4cc3e7a94.png)
-
-![statystyki_2](https://user-images.githubusercontent.com/57834846/226749453-25386324-9ff1-4477-a7ac-04a79fb9bd6f.png)
+![stats](https://user-images.githubusercontent.com/57834846/226751215-4f0424d4-04a1-4241-9c3f-accc7d4f05a5.png)
 
 - Mobile View / Widok Mobilny
 
