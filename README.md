@@ -257,3 +257,50 @@ http://localhost:4200/
 
 ***
 # Screenshots
+
+- Home Screen / Ekran Startowy
+
+![ekan_znaczniki](https://user-images.githubusercontent.com/57834846/226747815-b07b15d9-67cc-43b9-9335-0c6e7d19af8d.png)
+
+- Login Panel / Panel Logowania
+
+![logowanie_error](https://user-images.githubusercontent.com/57834846/226749604-0b1b545f-759f-47eb-856f-c1e618bd9ccc.png)
+
+- Signup Panel / Panel Rejestracji
+
+![rejestracja](https://user-images.githubusercontent.com/57834846/226748278-2f78080f-9777-4f93-8898-1488296a16ec.png)
+
+- Password Reset / Resetowanie Hasła
+
+![reset_password_request](https://user-images.githubusercontent.com/57834846/226748505-a6d78200-abaf-4e19-a6c1-ce857b294baf.png)
+![reset_link_send](https://user-images.githubusercontent.com/57834846/226748537-e0034fb0-68e9-4701-ad60-bfd401cbf073.png)
+
+ - Dashboard 
+ 
+![dashboard](https://user-images.githubusercontent.com/57834846/226748611-844280f2-eb6e-4eb2-abd2-a02115147db0.png)
+
+- Stashes / Schowki 
+
+![schowek_skrykti_dod](https://user-images.githubusercontent.com/57834846/226748954-ad34d354-e96f-44f0-bec7-b212d7ae5709.png)
+
+- Selected Storage / Wybrany Składzik 
+
+![skladzik_aktualne](https://user-images.githubusercontent.com/57834846/226749118-73d7479e-e0a6-4af0-bfb9-eabf0b5673fb.png)
+
+- Statistics / Statystyki
+
+![Statystyki_1](https://user-images.githubusercontent.com/57834846/226749448-118c3e13-94fd-4310-ae7b-6fa4cc3e7a94.png)
+
+![statystyki_2](https://user-images.githubusercontent.com/57834846/226749453-25386324-9ff1-4477-a7ac-04a79fb9bd6f.png)
+
+- Mobile View / Widok Mobilny
+
+![mobile](https://user-images.githubusercontent.com/57834846/226749550-6256614c-18a1-401d-b8fd-2361ed05b3b6.png)
+
+
+
+
+
+
+
+
